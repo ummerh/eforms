@@ -1,8 +1,11 @@
-<html>
-<head>
-<title>Status</title>
-</head>
+<!doctype html>
+<html lang="en">
+<%@include file="./include/head.jsp"%>
 <body>
-	<h3>Status Counter: ${sessionCounter}</h3>
+	<%@include file="./include/nav.jsp"%>
+	<div class="container-fluid">
+		<h3>Status Counter: ${sessionCounter}</h3>
+	</div>
+	<%@include file="./include/scripts.jsp"%>
 </body>
 </html>

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SessionStatusController {
 
-	@RequestMapping("/status")
+	@RequestMapping("/session/status")
 	public ModelAndView viewStatus(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("status");
 		Integer count = (Integer) req.getSession().getAttribute("SESSION_COUNTER");
@@ -17,6 +17,14 @@ public class SessionStatusController {
 			count = 0;
 		}
 		mv.addObject("sessionCounter", count);
+		return mv;
+	}
+
+	@RequestMapping("/session/end")
+	public ModelAndView sessionEnd(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView("status");
+		req.getSession().invalidate();
+		mv.addObject("sessionCounter", 0);
 		return mv;
 	}
 }
