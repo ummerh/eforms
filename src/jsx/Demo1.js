@@ -1,37 +1,26 @@
-class Demo1 extends React.Component{
-    render(){
-        return (
-    <ReactRouter.Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <ReactRouter.Link to="/Section1">Section 1</ReactRouter.Link>
-            </li>
-            <li>
-              <ReactRouter.Link to="/Section2">Section 2</ReactRouter.Link>
-            </li>
-            <li>
-              <ReactRouter.Link to="/Section3">Section 3</ReactRouter.Link>
-            </li>
-          </ul>
-        </nav>
+const React = require('react');
+const ReactDOM = require('react-dom');
+import {
+    BrowserRouter as Router,
+    Switch,
+    Link,
+    Route    
+  } from "react-router-dom";
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <ReactRouter.Switch>
-          <ReactRouter.Route path="/Section1">
-            <HomeWindow />
-          </ReactRouter.Route>
-          <ReactRouter.Route path="/Section2">
-          <HomeWindow />
-          </ReactRouter.Route>
-          <ReactRouter.Route path="/Section3">
-          <HomeWindow />
-          </ReactRouter.Route>
-        </ReactRouter.Switch>
-      </div>
-    </ReactRouter.Router>
+export class Demo1 extends React.Component{
+	render(){
+		return (            
+            <div>
+                <h3>Demo 1 home </h3>
+                <Router>
+                <Link to="/app/demo1/new" >New</Link>
+                <Switch>
+                    <Route path="/app/demo1/new">
+                        <h3>Create a new demo1 component</h3>
+                    </Route>
+                </Switch>
+                </Router>
+            </div>
         );
-    }
+	}
 }
