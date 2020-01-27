@@ -1,0 +1,4 @@
+npx babel --watch src/jsx --out-dir src/main/webapp/js --presets react-app/prod
+
+
+npx webpack --watch -d
