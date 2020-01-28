@@ -1,4 +1,7 @@
 npx babel --watch src/jsx --out-dir src/main/webapp/js --presets react-app/prod
 
+docker inspect --format='{{.Name}} {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)
 
 npx webpack --watch -d
+
+
