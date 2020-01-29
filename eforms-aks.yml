@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: eforms-app
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 1
+  minReadySeconds: 30 
+  template:
+    metadata:
+      labels:
+        app: eforms-app
+    spec:
+      nodeSelector:
+        "appruntime": springboot
+      containers:
+      - name: eforms-app
+        image: eacloudacr.azurecr.io/ummerh/eforms:V1
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eforms-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: eforms-app
