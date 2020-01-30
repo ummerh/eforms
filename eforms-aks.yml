@@ -1,6 +1,8 @@
-apiVersion: apps/v1beta1
+apiVersion: v1
 kind: Deployment
 metadata:
+  labels:
+    app.kubernetes.io/name: eforms-app
   name: eforms-app
 spec:
   replicas: 2
@@ -9,16 +11,17 @@ spec:
       maxSurge: 3
       maxUnavailable: 1
   minReadySeconds: 30 
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: eforms-app
   template:
     metadata:
       labels:
-        app: eforms-app
+        app.kubernetes.io/name: eforms-app
     spec:
-      nodeSelector:
-        "appruntime": springboot
       containers:
-      - name: eforms-app
-        image: eacloudacr.azurecr.io/ummerh/eforms:V1
+      - name: eforms
+        image: eacloudacr.azurecr.io/eacloud/eforms:V1
         ports:
         - containerPort: 8080
         resources:
@@ -30,10 +33,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: eforms-app
+  name: eforms-lb
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: eforms-app
+    matchLabels:
+      app.kubernetes.io/name: eforms-app

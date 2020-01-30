@@ -14,8 +14,8 @@ class App extends React.Component{
         return (
     <Router>
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">E-Forms</a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand" href="/">E-Forms</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,11 +24,8 @@ class App extends React.Component{
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-                <li className="nav-item active"><Link className="nav-link" to="/app/home">Home
-                        <span className="sr-only">(current)</span>
-                </Link></li>
-                <li className="nav-item"><Link className="nav-link" to="/app/demo1">Demo1</Link></li>
+            <ul className="navbar-nav mr-auto">                
+                <li className="nav-item"><Link className="nav-link" to="/app/demo1">SPA</Link></li>
                 <li className="nav-item dropdown"><a
                     className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                     role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -39,7 +36,7 @@ class App extends React.Component{
                         <Link className="dropdown-item" to="/app/session/end">End</Link>
                     </div></li>
                 <li className="nav-item"><a className="nav-link disabled" href="#"
-                    aria-disabled="true">Demo2</a></li>
+                    aria-disabled="true">API</a></li>
             </ul>
         </div>
         </nav>
@@ -47,9 +44,9 @@ class App extends React.Component{
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/app/home">
-          <h3><HomeWindow /></h3>
-          </Route>
+          <Route path="/" exact>
+            <HomeWindow />
+          </Route>          
           <Route path="/app/demo1">
             <Demo1 />
           </Route>
