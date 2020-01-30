@@ -1,44 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: eforms-deployment
   labels:
-    run: eforms-app
-  name: eforms-app
+    app: eforms
 spec:
   replicas: 3
   selector:
     matchLabels:
-      run: eforms-app
-  minReadySeconds: 5
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
-    type: RollingUpdate
+      app: eforms
   template:
     metadata:
       labels:
-        run: eforms-app
+        app: eforms
     spec:
       containers:
       - name: eforms
         image: eacloudacr.azurecr.io/eacloud/eforms:latest
         ports:
         - containerPort: 8080
-        resources:
-          requests:
-            cpu: 250m
-          limits:
-            cpu: 500m        
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: eforms-lb
+  name: eforms-service
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
     matchLabels:
-      run: eforms-app
+      app: eforms
