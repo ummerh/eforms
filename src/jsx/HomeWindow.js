@@ -14,7 +14,12 @@ export class HomeWindow extends React.Component{
 			<h1>Cloud Native Applications - Demo</h1>
 			<p className="lead">Cloud-native applications are built from the ground up—optimized for cloud-scale and performance. Typically, designed using microservices architectures, use managed services, and take advantage of continuous delivery to achieve reliability and faster time to market.</p>
 			<p>				
-				<a href="https://azure.microsoft.com/en-us/overview/cloudnative/" className="btn btn-secondary my-2" target="_blank">More from Azure</a>
+				<a href="https://github.com/ummerh/eforms" className="btn btn-secondary" target="_blank">
+				{'  '}
+				<svg class="octicon octicon-mark-github v-align-middle" height="22" viewBox="0 0 16 16" version="1.1" width="22" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+		        {'  '}Github</a>
+				{'    '}
+				<a href="https://azure.microsoft.com/en-us/overview/cloudnative/" className="btn btn-secondary" target="_blank">More from Azure</a>
 			</p>
 			<p className="lead text-muted">At its core, microservices is a decomposition technique for overcoming system complexity. It accomplishes this goal by splitting complex systems into multiple independent, narrowly focused services, each with its own isolated business logic and data store. In microservices ­based applications, any function can be scaled and deployed separately. Most of all, several teams can simultaneously work on different modules to enhance the overall system’s time­ to­ market without the risk of stepping on each other. </p>
 			<p className="lead text-muted">This application demonstrates capabilities like Single Page Applications, API Services, Stateless Session Management, Auto Scaling, and Continous Rolling Updates. Built using Spring Boot, ReactJS, Redis, Docker, and deployed on Azure Kubernetes Services.</p>
