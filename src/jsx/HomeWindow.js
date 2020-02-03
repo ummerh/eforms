@@ -48,6 +48,7 @@ export class HomeWindow extends React.Component{
 						<li>NodeJS</li>
 						<li>ReactJS</li>
 						<li>Spring Boot</li>
+						<li>Bootstrap</li>
 						<li>Redis</li>
 						<li>Docker</li>
 						<li>Kubernetes</li>
