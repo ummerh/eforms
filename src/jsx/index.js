@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const HomeWindow = require("./HomeWindow.js").HomeWindow;
-const Demo1 = require("./Demo1.js").Demo1;
+const Cart = require("./Cart.js").Cart;
 import {
     BrowserRouter as Router,
     Switch,
@@ -25,7 +25,7 @@ class App extends React.Component{
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">                
-                <li className="nav-item"><Link className="nav-link" to="/app/demo1">SPA</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/app/cart/checkout">Shopping Cart</Link></li>
                 <li className="nav-item dropdown"><a
                     className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                     role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -47,14 +47,17 @@ class App extends React.Component{
           <Route path="/" exact>
             <HomeWindow />
           </Route>          
-          <Route path="/app/demo1">
-            <Demo1 />
+          <Route path="/app/cart/checkout">
+            <Cart />
           </Route>
           <Route path="/app/session/status">
             <h3>Session Staus</h3>
           </Route>
           <Route path="/app/session/end">
             <h3>Session End</h3>
+          </Route>
+          <Route path="/app/cart/review">
+            <Cart readOnly={true} />
           </Route>
         </Switch>
       </div>
