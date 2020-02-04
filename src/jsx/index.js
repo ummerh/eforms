@@ -2,6 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const HomeWindow = require("./HomeWindow.js").HomeWindow;
 const Cart = require("./Cart.js").Cart;
+const CartReview = require("./CartReview.js").CartReview;
 import {
     BrowserRouter as Router,
     Switch,
@@ -57,7 +58,7 @@ class App extends React.Component{
             <h3>Session End</h3>
           </Route>
           <Route path="/app/cart/review">
-            <Cart readOnly={true} />
+            <CartReview />
           </Route>
         </Switch>
       </div>
