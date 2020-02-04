@@ -8,10 +8,8 @@ mvn clean package
 
 docker build . -t eacloudacr.azurecr.io/eacloud/eforms
 
-docker tag eacloudacr.azurecr.io/eacloud/eforms eacloudacr.azurecr.io/eacloud/eforms:green
+docker tag eacloudacr.azurecr.io/eacloud/eforms eacloudacr.azurecr.io/eacloud/eforms:latest
 
 docker push  eacloudacr.azurecr.io/eacloud/eforms
-
-kubectl delete deploy/eforms-deployment
 
 kubectl apply -f eforms-aks.yml
