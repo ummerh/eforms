@@ -1,3 +1,6 @@
+
+#!/bin/bash
+
 az acr login --resource-group=dc50-eacloud-temp-rg002 --name=eacloudacr
 
 az aks get-credentials --resource-group=dc50-eacloud-temp-rg002 --name=eacloudAKS
