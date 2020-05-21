@@ -18,7 +18,8 @@ export class Cart extends React.Component{
         }
 		return (
             <div className="container">
-                        <div className="row">
+                        <br/>
+                        <div className="row">                            
                             {hdr}
                         </div>
                         <div className="row">

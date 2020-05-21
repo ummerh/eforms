@@ -13,7 +13,7 @@ export class CartReview extends React.Component{
 	}
 	render(){       
 		return (
-            <div className="container">
+            <div className="container"><br/>
                         <div className="row">
                             <h3>Review and place order</h3>
                         </div>

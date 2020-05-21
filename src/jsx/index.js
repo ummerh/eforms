@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const HomeWindow = require("./HomeWindow.js").HomeWindow;
 const Cart = require("./Cart.js").Cart;
 const CartReview = require("./CartReview.js").CartReview;
+const SessionStatus = require("./SessionStatus.js").SessionStatus;
 import {
     HashRouter as Router,
     Switch,
@@ -52,10 +53,15 @@ class App extends React.Component{
             <Cart />
           </Route>
           <Route path="/app/session/status" strict>
-            <h3>Session Staus</h3>
+            <SessionStatus />
           </Route>
           <Route path="/app/session/end" strict>
-            <h3>Session End</h3>
+            <span>
+              <br/>
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+            </span>
           </Route>
           <Route path="/app/cart/review" strict>
             <CartReview />

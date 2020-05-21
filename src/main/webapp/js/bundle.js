@@ -36086,7 +36086,7 @@ function (_React$Component) {
 
       return React.createElement("div", {
         className: "container"
-      }, React.createElement("div", {
+      }, React.createElement("br", null), React.createElement("div", {
         className: "row"
       }, hdr), React.createElement("div", {
         className: "row"
@@ -36451,7 +36451,7 @@ function (_React$Component) {
     value: function render() {
       return React.createElement("div", {
         className: "container"
-      }, React.createElement("div", {
+      }, React.createElement("br", null), React.createElement("div", {
         className: "row"
       }, React.createElement("h3", null, "Review and place order")), React.createElement("div", {
         className: "row"
@@ -36723,6 +36723,106 @@ function (_React$Component2) {
 
 /***/ }),
 
+/***/ "./src/jsx/SessionStatus.js":
+/*!**********************************!*\
+  !*** ./src/jsx/SessionStatus.js ***!
+  \**********************************/
+/*! exports provided: SessionStatus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SessionStatus", function() { return SessionStatus; });
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var SessionStatus =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SessionStatus, _React$Component);
+
+  function SessionStatus(props) {
+    var _this;
+
+    _classCallCheck(this, SessionStatus);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionStatus).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      status: {}
+    };
+    return _this;
+  }
+
+  _createClass(SessionStatus, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/session/status").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          status: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.isLoaded) {
+        return React.createElement("table", {
+          className: "table"
+        }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
+          scope: "col"
+        }, "ID"), React.createElement("th", {
+          scope: "col"
+        }, "Creation Time"), React.createElement("th", {
+          scope: "col"
+        }, "Last Accessed"))), React.createElement("tbody", null, React.createElement("tr", null, React.createElement("td", {
+          scope: "row"
+        }, this.state.status.id), React.createElement("td", null, this.state.status.createdTime), React.createElement("td", null, this.state.status.lastAccessedTime))));
+      }
+
+      return React.createElement("div", {
+        className: "spinner-border",
+        role: "status"
+      }, React.createElement("span", {
+        className: "sr-only"
+      }, "Loading..."));
+    }
+  }]);
+
+  return SessionStatus;
+}(React.Component);
+
+/***/ }),
+
 /***/ "./src/jsx/index.js":
 /*!**************************!*\
   !*** ./src/jsx/index.js ***!
@@ -36760,6 +36860,8 @@ var HomeWindow = __webpack_require__(/*! ./HomeWindow.js */ "./src/jsx/HomeWindo
 var Cart = __webpack_require__(/*! ./Cart.js */ "./src/jsx/Cart.js").Cart;
 
 var CartReview = __webpack_require__(/*! ./CartReview.js */ "./src/jsx/CartReview.js").CartReview;
+
+var SessionStatus = __webpack_require__(/*! ./SessionStatus.js */ "./src/jsx/SessionStatus.js").SessionStatus;
 
 
 
@@ -36838,10 +36940,15 @@ function (_React$Component) {
       }, React.createElement(Cart, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
         path: "/app/session/status",
         strict: true
-      }, React.createElement("h3", null, "Session Staus")), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+      }, React.createElement(SessionStatus, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
         path: "/app/session/end",
         strict: true
-      }, React.createElement("h3", null, "Session End")), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+      }, React.createElement("span", null, React.createElement("br", null), React.createElement("div", {
+        className: "spinner-border",
+        role: "status"
+      }, React.createElement("span", {
+        className: "sr-only"
+      }, "Loading...")))), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
         path: "/app/cart/review",
         strict: true
       }, React.createElement(CartReview, null)))));
