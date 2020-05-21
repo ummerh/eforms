@@ -4,7 +4,7 @@ const HomeWindow = require("./HomeWindow.js").HomeWindow;
 const Cart = require("./Cart.js").Cart;
 const CartReview = require("./CartReview.js").CartReview;
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Link,
     Route    
@@ -48,16 +48,16 @@ class App extends React.Component{
           <Route path="/" exact>
             <HomeWindow />
           </Route>          
-          <Route path="/app/cart/checkout">
+          <Route path="/app/cart/checkout" strict>
             <Cart />
           </Route>
-          <Route path="/app/session/status">
+          <Route path="/app/session/status" strict>
             <h3>Session Staus</h3>
           </Route>
-          <Route path="/app/session/end">
+          <Route path="/app/session/end" strict>
             <h3>Session End</h3>
           </Route>
-          <Route path="/app/cart/review">
+          <Route path="/app/cart/review" strict>
             <CartReview />
           </Route>
         </Switch>

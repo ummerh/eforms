@@ -36777,7 +36777,7 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["BrowserRouter"], null, React.createElement("div", null, React.createElement("nav", {
+      return React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["HashRouter"], null, React.createElement("div", null, React.createElement("nav", {
         className: "navbar navbar-expand-lg navbar-dark bg-dark"
       }, React.createElement("a", {
         className: "navbar-brand",
@@ -36833,13 +36833,17 @@ function (_React$Component) {
         path: "/",
         exact: true
       }, React.createElement(HomeWindow, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/cart/checkout"
+        path: "/app/cart/checkout",
+        strict: true
       }, React.createElement(Cart, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/session/status"
+        path: "/app/session/status",
+        strict: true
       }, React.createElement("h3", null, "Session Staus")), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/session/end"
+        path: "/app/session/end",
+        strict: true
       }, React.createElement("h3", null, "Session End")), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/cart/review"
+        path: "/app/cart/review",
+        strict: true
       }, React.createElement(CartReview, null)))));
     }
   }]);
