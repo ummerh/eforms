@@ -15,11 +15,11 @@ import io.lettuce.core.ReadFrom;
 @EnableRedisHttpSession
 public class AppConfig {
 
-	@Value("${redisServer}")
+	@Value("${redisHostName}")
 	private String redisServer;
-	@Value("${redisPort}")
+	@Value("${redisSslPort}")
 	private Integer redisPort;
-	@Value("${redisPassword}")
+	@Value("${redisPrimaryKey}")
 	private String redisPassword;
 
 	@Bean

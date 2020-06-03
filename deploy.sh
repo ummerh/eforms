@@ -2,10 +2,10 @@
 #!/bin/bash
 
 login_docker(){
-    az acr login --resource-group=dc50-eacloud-temp-rg002 --name=eacloudacr
+    az acr login --resource-group=HK-eforms-infra --name=eacloudacr
 }
 login_aks(){
-    az aks get-credentials --resource-group=dc50-eacloud-temp-rg002 --name=eacloudAKS
+    az aks get-credentials --resource-group=HK-eforms-infra --name=eacloudAKS
 }
 
 build_app(){
