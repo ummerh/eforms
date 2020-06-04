@@ -1,5 +1,6 @@
 package com.jet.eacloud.demo.springboot.eforms.bo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Category {
+public class Category implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer categoryId;

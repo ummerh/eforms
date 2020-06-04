@@ -1,8 +1,7 @@
 package com.jet.eacloud.demo.springboot.eforms.api;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,38 +9,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jet.eacloud.demo.springboot.eforms.bo.Customer;
-import com.jet.eacloud.demo.springboot.eforms.dao.JpaDAO;
+import com.jet.eacloud.demo.springboot.eforms.repo.CustomerRepository;
 
 @RestController
 public class CustomerAPI {
 
 	@Autowired
-	private JpaDAO<Customer> jpaDao;
+	CustomerRepository customerRepository;
 
 	@RequestMapping("/api/customers")
-	public List<Customer> getAll() {
-		return jpaDao.findAll(Customer.class);
+	public Iterable<Customer> getAll() {
+		return customerRepository.findAll(Sort.by("firstName"));
 	}
 
-	@RequestMapping("/api/customers/{customerId}")
-	public Customer getById(@PathVariable Long customerId) {
-		return jpaDao.findOne(Customer.class, customerId);
+	@RequestMapping("/api/customers/{id}")
+	public Customer getById(@PathVariable Integer id) {
+		return customerRepository.findById(id).get();
 	}
 
 	@RequestMapping(value = "/api/customers", method = RequestMethod.POST)
-	public Customer post(@RequestBody Customer customer) {
-		jpaDao.save(customer);
-		return customer;
+	public Customer post(@RequestBody Customer rec) {
+		customerRepository.save(rec);
+		return rec;
 	}
 
-	@RequestMapping(value = "/api/customers/{customerId}", method = RequestMethod.PUT)
-	public Customer put(@PathVariable Long customerId, @RequestBody Customer customer) {
-		Customer old = jpaDao.findOne(Customer.class, customerId);
+	@RequestMapping(value = "/api/customers/{id}", method = RequestMethod.PUT)
+	public Customer put(@PathVariable Integer id, @RequestBody Customer rec) {
+		Customer old = customerRepository.findById(id).get();
 		if (old != null) {
-			customer.setCustomerId(customerId.intValue());
-			jpaDao.update(customer);
+			rec.setCustomerId(id);
+			customerRepository.save(rec);
 		}
-		return customer;
+		return rec;
 	}
-
 }
