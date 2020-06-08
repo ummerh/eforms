@@ -6,8 +6,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.jet.eacloud.demo.springboot.eforms.bo.Product;
 
-public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {
+public interface ProductRepository extends PagingAndSortingRepository<Product, String> {
 
-	public List<Product> findByCategoryIdOrderByProductName(Integer categoryId);
+	public List<Product> findByCategoryIdOrderByProductName(String categoryId);
 
 }

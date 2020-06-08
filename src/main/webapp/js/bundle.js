@@ -36024,16 +36024,16 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/jsx/Cart.js":
-/*!*************************!*\
-  !*** ./src/jsx/Cart.js ***!
-  \*************************/
-/*! exports provided: Cart */
+/***/ "./src/jsx/CategoryGridView.js":
+/*!*************************************!*\
+  !*** ./src/jsx/CategoryGridView.js ***!
+  \*************************************/
+/*! exports provided: CategoryGridView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cart", function() { return Cart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryGridView", function() { return CategoryGridView; });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -36058,353 +36058,118 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
 
-var Cart =
+var CategoryGridView =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Cart, _React$Component);
+  _inherits(CategoryGridView, _React$Component);
 
-  function Cart(props) {
+  function CategoryGridView(props) {
     var _this;
 
-    _classCallCheck(this, Cart);
+    _classCallCheck(this, CategoryGridView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cart).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CategoryGridView).call(this, props));
     _this.state = {
-      currTab: ""
+      isLoaded: false,
+      categories: []
     };
     return _this;
   }
 
-  _createClass(Cart, [{
+  _createClass(CategoryGridView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/categories").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          categories: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var hdr = React.createElement("h3", null, "Fill in the form below to checkout.");
+      var list = this.state.categories.map(function (cat) {
+        return (
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "card col-lg-3",
+            key: cat.categoryId
+          },
+          /*#__PURE__*/
+          React.createElement("img", {
+            src: cat.categoryImageURL,
+            className: "card-img-top",
+            alt: cat.categoryName
+          }),
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "card-body"
+          },
+          /*#__PURE__*/
+          React.createElement("h5", {
+            className: "card-title"
+          }, cat.categoryName),
+          /*#__PURE__*/
+          React.createElement("p", {
+            className: "card-text"
+          }, cat.categoryDescription),
+          /*#__PURE__*/
+          React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+            className: "btn btn-outline-primary",
+            role: "button",
+            to: "/app/demo/shop/categories/".concat(cat.categoryId)
+          }, "shop")))
+        );
+      });
 
-      if (this.props.readOnly) {
-        hdr = React.createElement("h3", null, "Review and place order.");
+      if (this.state.isLoaded) {
+        return (
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "row"
+          }, list)
+        );
       }
 
-      return React.createElement("div", {
-        className: "container"
-      }, React.createElement("br", null), React.createElement("div", {
-        className: "row"
-      }, hdr), React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-4 order-md-2 mb-4"
-      }, React.createElement("h4", {
-        className: "d-flex justify-content-between align-items-center mb-3"
-      }, React.createElement("span", {
-        className: "text-muted"
-      }, "Your cart"), React.createElement("span", {
-        className: "badge badge-secondary badge-pill"
-      }, "3")), React.createElement("ul", {
-        className: "list-group mb-3"
-      }, React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("h6", {
-        className: "my-0"
-      }, "Product name"), React.createElement("small", {
-        className: "text-muted"
-      }, "Brief description")), React.createElement("span", {
-        className: "text-muted"
-      }, "$12")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("h6", {
-        className: "my-0"
-      }, "Second product"), React.createElement("small", {
-        className: "text-muted"
-      }, "Brief description")), React.createElement("span", {
-        className: "text-muted"
-      }, "$8")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("h6", {
-        className: "my-0"
-      }, "Third item"), React.createElement("small", {
-        className: "text-muted"
-      }, "Brief description")), React.createElement("span", {
-        className: "text-muted"
-      }, "$5")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between bg-light"
-      }, React.createElement("div", {
-        className: "text-success"
-      }, React.createElement("h6", {
-        className: "my-0"
-      }, "Promo code"), React.createElement("small", null, "EXAMPLECODE")), React.createElement("span", {
-        className: "text-success"
-      }, "-$5")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between"
-      }, React.createElement("span", null, "Total (USD)"), React.createElement("strong", null, "$20"))), React.createElement("form", {
-        className: "card p-2"
-      }, React.createElement("div", {
-        className: "input-group"
-      }, React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        placeholder: "Promo code"
-      }), React.createElement("div", {
-        className: "input-group-append"
-      }, React.createElement("button", {
-        type: "submit",
-        className: "btn btn-secondary"
-      }, "Redeem"))))), React.createElement("div", {
-        className: "col-md-8 order-md-1"
-      }, React.createElement("h4", {
-        className: "mb-3"
-      }, "Billing address"), React.createElement("form", {
-        className: "needs-validation",
-        action: "/app/cart/review"
-      }, React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-6 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "firstName"
-      }, "First name"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "firstName",
-        placeholder: "",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Valid first name is required.")), React.createElement("div", {
-        className: "col-md-6 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "lastName"
-      }, "Last name"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "lastName",
-        placeholder: "",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Valid last name is required."))), React.createElement("div", {
-        className: "mb-3"
-      }, React.createElement("label", {
-        htmlFor: "username"
-      }, "Username"), React.createElement("div", {
-        className: "input-group"
-      }, React.createElement("div", {
-        className: "input-group-prepend"
-      }, React.createElement("span", {
-        className: "input-group-text"
-      }, "@")), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "username",
-        placeholder: "Username",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Your username is required."))), React.createElement("div", {
-        className: "mb-3"
-      }, React.createElement("label", {
-        htmlFor: "email"
-      }, "Email ", React.createElement("span", {
-        className: "text-muted"
-      }, "(Optional)")), React.createElement("input", {
-        type: "email",
-        className: "form-control",
-        id: "email",
-        placeholder: "you@example.com"
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Please enter a valid email address for shipping updates.")), React.createElement("div", {
-        className: "mb-3"
-      }, React.createElement("label", {
-        htmlFor: "address"
-      }, "Address"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "address",
-        placeholder: "1234 Main St",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Please enter your shipping address.")), React.createElement("div", {
-        className: "mb-3"
-      }, React.createElement("label", {
-        htmlFor: "address2"
-      }, "Address 2 ", React.createElement("span", {
-        className: "text-muted"
-      }, "(Optional)")), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "address2",
-        placeholder: "Apartment or suite"
-      })), React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-5 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "country"
-      }, "Country"), React.createElement("select", {
-        className: "custom-select d-block w-100",
-        id: "country",
-        required: ""
-      }, React.createElement("option", null, "Choose..."), React.createElement("option", null, "United States")), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Please select a valid country.")), React.createElement("div", {
-        className: "col-md-4 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "state"
-      }, "State"), React.createElement("select", {
-        className: "custom-select d-block w-100",
-        id: "state",
-        required: ""
-      }, React.createElement("option", null, "Choose..."), React.createElement("option", null, "California")), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Please provide a valid state.")), React.createElement("div", {
-        className: "col-md-3 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "zip"
-      }, "Zip"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "zip",
-        placeholder: "",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Zip code required."))), React.createElement("hr", {
-        className: "mb-4"
-      }), React.createElement("div", {
-        className: "custom-control custom-checkbox"
-      }, React.createElement("input", {
-        type: "checkbox",
-        className: "custom-control-input",
-        id: "same-address"
-      }), React.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "same-address"
-      }, "Shipping address is the same as my billing address")), React.createElement("div", {
-        className: "custom-control custom-checkbox"
-      }, React.createElement("input", {
-        type: "checkbox",
-        className: "custom-control-input",
-        id: "save-info"
-      }), React.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "save-info"
-      }, "Save this information for next time")), React.createElement("hr", {
-        className: "mb-4"
-      }), React.createElement("h4", {
-        className: "mb-3"
-      }, "Payment"), React.createElement("div", {
-        className: "d-block my-3"
-      }, React.createElement("div", {
-        className: "custom-control custom-radio"
-      }, React.createElement("input", {
-        id: "credit",
-        name: "paymentMethod",
-        type: "radio",
-        className: "custom-control-input",
-        required: ""
-      }), React.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "credit"
-      }, "Credit card")), React.createElement("div", {
-        className: "custom-control custom-radio"
-      }, React.createElement("input", {
-        id: "debit",
-        name: "paymentMethod",
-        type: "radio",
-        className: "custom-control-input",
-        required: ""
-      }), React.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "debit"
-      }, "Debit card")), React.createElement("div", {
-        className: "custom-control custom-radio"
-      }, React.createElement("input", {
-        id: "paypal",
-        name: "paymentMethod",
-        type: "radio",
-        className: "custom-control-input",
-        required: ""
-      }), React.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "paypal"
-      }, "PayPal"))), React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-6 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "cc-name"
-      }, "Name on card"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "cc-name",
-        placeholder: "",
-        required: ""
-      }), React.createElement("small", {
-        className: "text-muted"
-      }, "Full name as displayed on card"), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Name on card is required")), React.createElement("div", {
-        className: "col-md-6 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "cc-number"
-      }, "Credit card number"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "cc-number",
-        placeholder: "",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Credit card number is required"))), React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-3 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "cc-expiration"
-      }, "Expiration"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "cc-expiration",
-        placeholder: "",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Expiration date required")), React.createElement("div", {
-        className: "col-md-3 mb-3"
-      }, React.createElement("label", {
-        htmlFor: "cc-cvv"
-      }, "CVV"), React.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "cc-cvv",
-        placeholder: "",
-        required: ""
-      }), React.createElement("div", {
-        className: "invalid-feedback"
-      }, "Security code required"))), React.createElement("hr", {
-        className: "mb-4"
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-        className: "btn btn-primary btn-lg btn-block",
-        to: "/app/cart/review"
-      }, "Continue to checkout")))));
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
     }
   }]);
 
-  return Cart;
+  return CategoryGridView;
 }(React.Component);
 
 /***/ }),
 
-/***/ "./src/jsx/CartReview.js":
-/*!*******************************!*\
-  !*** ./src/jsx/CartReview.js ***!
-  \*******************************/
-/*! exports provided: CartReview */
+/***/ "./src/jsx/CustomerListView.js":
+/*!*************************************!*\
+  !*** ./src/jsx/CustomerListView.js ***!
+  \*************************************/
+/*! exports provided: CustomerListView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartReview", function() { return CartReview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerListView", function() { return CustomerListView; });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -36429,120 +36194,432 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
 
-var CartReview =
+var CustomerListView =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(CartReview, _React$Component);
+  _inherits(CustomerListView, _React$Component);
 
-  function CartReview(props) {
+  function CustomerListView(props) {
     var _this;
 
-    _classCallCheck(this, CartReview);
+    _classCallCheck(this, CustomerListView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CartReview).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomerListView).call(this, props));
     _this.state = {
-      currTab: ""
+      isLoaded: false,
+      customers: []
     };
     return _this;
   }
 
-  _createClass(CartReview, [{
+  _createClass(CustomerListView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/customers").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          customers: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", {
-        className: "container"
-      }, React.createElement("br", null), React.createElement("div", {
-        className: "row"
-      }, React.createElement("h3", null, "Review and place order")), React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-8 order-md-1"
-      }, React.createElement("h4", {
-        className: "d-flex justify-content-between align-items-center mb-3"
-      }, React.createElement("span", {
-        className: "text-muted"
-      }, "Order summary"), React.createElement("span", {
-        className: "badge badge-secondary badge-pill"
-      }, "3")), React.createElement("ul", {
-        className: "list-group mb-3"
-      }, React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("h6", {
-        className: "my-0"
-      }, "Product name"), React.createElement("small", {
-        className: "text-muted"
-      }, "Brief description")), React.createElement("span", {
-        className: "text-muted"
-      }, "$12")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("h6", {
-        className: "my-0"
-      }, "Second product"), React.createElement("small", {
-        className: "text-muted"
-      }, "Brief description")), React.createElement("span", {
-        className: "text-muted"
-      }, "$8")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("h6", {
-        className: "my-0"
-      }, "Third item"), React.createElement("small", {
-        className: "text-muted"
-      }, "Brief description")), React.createElement("span", {
-        className: "text-muted"
-      }, "$5")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between bg-light"
-      }, React.createElement("div", {
-        className: "text-success"
-      }, React.createElement("h6", {
-        className: "my-0"
-      }, "Promo code"), React.createElement("small", null, "EXAMPLECODE")), React.createElement("span", {
-        className: "text-success"
-      }, "-$5")), React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between"
-      }, React.createElement("span", null, "Total (USD)"), React.createElement("strong", null, "$20")))), React.createElement("div", {
-        className: "col-md-8 order-md-1"
-      }, React.createElement("h4", {
-        className: "mb-3"
-      }, "Shipping address"), React.createElement("ul", {
-        className: "list-group mb-3"
-      }, React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("small", {
-        className: "text-muted"
-      }, "John Doe"), React.createElement("br", null), React.createElement("small", {
-        className: "text-muted"
-      }, "1234 W Smith Court"), React.createElement("br", null), React.createElement("small", {
-        className: "text-muted"
-      }, "OKEMO, MI 48864")), React.createElement("a", {
-        href: "#"
-      }, "edit")))), React.createElement("div", {
-        className: "col-md-8 order-md-1"
-      }, React.createElement("h4", {
-        className: "mb-3"
-      }, "Payment Method"), React.createElement("ul", {
-        className: "list-group mb-3"
-      }, React.createElement("li", {
-        className: "list-group-item d-flex justify-content-between lh-condensed"
-      }, React.createElement("div", null, React.createElement("small", {
-        className: "text-muted"
-      }, "Visa Credit Card"), React.createElement("br", null), React.createElement("small", {
-        className: "text-muted"
-      }, "xxxx-xxxx-xxxx-4886"), React.createElement("br", null), React.createElement("small", {
-        className: "text-muted"
-      }, "Billing address - same as shipping address")), React.createElement("a", {
-        href: "#"
-      }, "edit")))), React.createElement("div", {
-        className: "col-md-8 order-md-1"
-      }, React.createElement("hr", {
-        className: "mb-4"
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-        className: "btn btn-primary btn-lg btn-block",
-        to: "/"
-      }, "Place Order"))));
+      if (this.state.isLoaded) {
+        var userList = this.state.customers.map(function (usr) {
+          return (
+            /*#__PURE__*/
+            React.createElement("tr", {
+              key: usr.customerId
+            },
+            /*#__PURE__*/
+            React.createElement("td", {
+              scope: "row"
+            }, usr.shortName),
+            /*#__PURE__*/
+            React.createElement("td", null, usr.firstName),
+            /*#__PURE__*/
+            React.createElement("td", null, usr.lastName),
+            /*#__PURE__*/
+            React.createElement("td", null,
+            /*#__PURE__*/
+            React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+              className: "btn btn-outline-primary",
+              role: "button",
+              to: "/app/demo/shop/customer/".concat(usr.customerId)
+            }, "Shop Products")))
+          );
+        });
+        return (
+          /*#__PURE__*/
+          React.createElement("table", {
+            className: "table table-striped table-hover"
+          },
+          /*#__PURE__*/
+          React.createElement("thead", null,
+          /*#__PURE__*/
+          React.createElement("tr", null,
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Customer Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "First Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Last Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Action"))),
+          /*#__PURE__*/
+          React.createElement("tbody", null, userList))
+        );
+      }
+
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
     }
   }]);
 
-  return CartReview;
+  return CustomerListView;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/DemoApp.js":
+/*!****************************!*\
+  !*** ./src/jsx/DemoApp.js ***!
+  \****************************/
+/*! exports provided: DemoApp */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DemoApp", function() { return DemoApp; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var CustomerListView = __webpack_require__(/*! ./CustomerListView.js */ "./src/jsx/CustomerListView.js").CustomerListView;
+
+var UserListView = __webpack_require__(/*! ./UserListView.js */ "./src/jsx/UserListView.js").UserListView;
+
+
+var DemoApp =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DemoApp, _React$Component);
+
+  function DemoApp(props) {
+    _classCallCheck(this, DemoApp);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DemoApp).call(this, props));
+  }
+
+  _createClass(DemoApp, [{
+    key: "render",
+    value: function render() {
+      return (
+        /*#__PURE__*/
+        React.createElement("div", null,
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "col-lg-6 col-sm-3"
+        },
+        /*#__PURE__*/
+        React.createElement("h3", null, "Choose an employee or a customer profile from the lists to start the session."),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "shadow p-3 mb-5 bg-white rounded"
+        }, "Employees.",
+        /*#__PURE__*/
+        React.createElement(UserListView, null)),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "shadow p-3 mb-5 bg-white rounded"
+        }, "Customers",
+        /*#__PURE__*/
+        React.createElement(CustomerListView, null))))
+      );
+    }
+  }]);
+
+  return DemoApp;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/Home.js":
+/*!*************************!*\
+  !*** ./src/jsx/Home.js ***!
+  \*************************/
+/*! exports provided: Home */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return Home; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var HomeWindow = __webpack_require__(/*! ./HomeWindow.js */ "./src/jsx/HomeWindow.js").HomeWindow;
+
+var SessionStatus = __webpack_require__(/*! ./SessionStatus.js */ "./src/jsx/SessionStatus.js").SessionStatus;
+
+var DemoApp = __webpack_require__(/*! ./DemoApp.js */ "./src/jsx/DemoApp.js").DemoApp;
+
+var ProductListView = __webpack_require__(/*! ./ProductListView.js */ "./src/jsx/ProductListView.js").ProductListView;
+
+var CategoryGridView = __webpack_require__(/*! ./CategoryGridView.js */ "./src/jsx/CategoryGridView.js").CategoryGridView;
+
+
+var Home =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Home, _React$Component);
+
+  function Home() {
+    _classCallCheck(this, Home);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Home).apply(this, arguments));
+  }
+
+  _createClass(Home, [{
+    key: "render",
+    value: function render() {
+      return (
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["HashRouter"], null,
+        /*#__PURE__*/
+        React.createElement("div", null,
+        /*#__PURE__*/
+        React.createElement("nav", {
+          className: "navbar navbar-expand-lg navbar-dark bg-dark"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "navbar-brand",
+          href: "/"
+        }, "E-Forms"),
+        /*#__PURE__*/
+        React.createElement("button", {
+          className: "navbar-toggler",
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "navbar-toggler-icon"
+        })),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "collapse navbar-collapse",
+          id: "navbarSupportedContent"
+        },
+        /*#__PURE__*/
+        React.createElement("ul", {
+          className: "navbar-nav mr-auto"
+        },
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item"
+        },
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+          className: "nav-link",
+          to: "/app/demo"
+        }, "Demo App")),
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item dropdown"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "nav-link dropdown-toggle",
+          href: "#",
+          id: "navbarDropdown",
+          role: "button",
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }, " Session "),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "dropdown-menu",
+          "aria-labelledby": "navbarDropdown"
+        },
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+          className: "dropdown-item",
+          to: "/app/session/status"
+        }, "Status"),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "dropdown-divider"
+        }),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+          className: "dropdown-item",
+          to: "/app/session/end"
+        }, "End"))),
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "nav-link disabled",
+          href: "#",
+          "aria-disabled": "true"
+        }, "API"))))),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null,
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement(HomeWindow, null)),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement(DemoApp, null)),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/manage/user/:userId",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement(ProductListView, {
+          manage: "true"
+        })),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/shop/customer/:customerId",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement(CategoryGridView, null)),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/manage/products/:productId",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement("h5", null, "Product Detail")),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/approve/products",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement("h5", null, "Approve Change Log")),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/shop/categories/:categoryId",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement("h5", null, "Shop category")),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/session/status",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement(SessionStatus, null)),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/session/end",
+          exact: true
+        },
+        /*#__PURE__*/
+        React.createElement("span", null,
+        /*#__PURE__*/
+        React.createElement("br", null),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Pending Implementation...")))))))
+      );
+    }
+  }]);
+
+  return Home;
 }(React.Component);
 
 /***/ }),
@@ -36599,65 +36676,192 @@ function (_React$Component) {
   _createClass(HomeWindow, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement("main", {
-        role: "main"
-      }, React.createElement("section", {
-        className: "jumbotron text-center"
-      }, React.createElement("div", {
-        className: "container"
-      }, React.createElement("h1", null, "Cloud Native Applications - Demo"), React.createElement("p", {
-        className: "lead"
-      }, "Cloud-native applications are built from the ground up\u2014optimized for cloud-scale and performance. Typically, designed using microservices architectures, use managed services, and take advantage of continuous delivery to achieve reliability and faster time to market."), React.createElement("p", null, React.createElement("a", {
-        href: "https://github.com/ummerh/eforms",
-        className: "btn btn-secondary",
-        target: "_blank"
-      }, '  ', React.createElement("svg", {
-        className: "octicon octicon-mark-github v-align-middle",
-        height: "22",
-        viewBox: "0 0 16 16",
-        version: "1.1",
-        width: "22",
-        "aria-hidden": "true"
-      }, React.createElement("path", {
-        fillRule: "evenodd",
-        d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
-      })), '  ', "Github"), '    ', React.createElement("a", {
-        href: "https://azure.microsoft.com/en-us/overview/cloudnative/",
-        className: "btn btn-secondary",
-        target: "_blank"
-      }, "More from Azure")), React.createElement("p", {
-        className: "lead text-muted"
-      }, "At its core, microservices is a decomposition technique for overcoming system complexity. It accomplishes this goal by splitting complex systems into multiple independent, narrowly focused services, each with its own isolated business logic and data store. In microservices \xADbased applications, any function can be scaled and deployed separately. Most of all, several teams can simultaneously work on different modules to enhance the overall system\u2019s time\xAD to\xAD market without the risk of stepping on each other. "), React.createElement("p", {
-        className: "lead text-muted"
-      }, "This application demonstrates capabilities like Single Page Applications, API Services, Stateless Session Management, Auto Scaling, and Continous Rolling Updates. Built using Spring Boot, ReactJS, Redis, Docker, and deployed on Azure Kubernetes Services."), React.createElement("hr", null), React.createElement("h2", null, "Reference Architecture"), React.createElement("p", null, React.createElement("img", {
-        className: "img-fluid",
-        src: "images/aks-reference-architecture.svg",
-        type: "image/svg+xml"
-      })))), React.createElement("div", {
-        className: "container"
-      }, React.createElement("div", {
-        className: "row"
-      }, React.createElement("div", {
-        className: "col-md-4"
-      }, React.createElement("h2", null, "Features"), React.createElement("p", null, "This application aims to convey some of the cloud-native application characteristics that are listed below;"), React.createElement("p", null, React.createElement("b", null, "Single Page Applications (SPA)"), "  - is a GUI design paradigm where UI will be delivered as JS components and data loaded on demand through API calls. Modern javascript libraries are supporting a UXI that is pleasant and highly interactive. "), React.createElement("p", null, React.createElement("b", null, "Stateless Applications"), " - native cloud applications are developed and improved continuously with frequent release cycles; this pace should not impact the user experience or the scalability. By using stateless design and detached session management, a user request can be handled by any node in the cluster and provides an uninterrupted experience to users."), React.createElement("p", null, React.createElement("b", null, "API"), " based microservices are highly distributed, scalable, domain-centric services delivered as Application Programming Interfaces, typically using technologies like HTTPS and REST. "), React.createElement("p", null, React.createElement("a", {
-        className: "btn btn-secondary",
-        href: "#",
-        role: "button"
-      }, "View details \xBB"))), React.createElement("div", {
-        className: "col-md-4"
-      }, React.createElement("h2", null, "Technologies"), React.createElement("ul", null, React.createElement("li", null, "Java"), React.createElement("li", null, "NodeJS"), React.createElement("li", null, "ReactJS"), React.createElement("li", null, "Spring Boot"), React.createElement("li", null, "Bootstrap"), React.createElement("li", null, "Redis"), React.createElement("li", null, "Docker"), React.createElement("li", null, "Kubernetes")), React.createElement("p", null, React.createElement("a", {
-        className: "btn btn-secondary",
-        href: "#",
-        role: "button"
-      }, "View details \xBB"))), React.createElement("div", {
-        className: "col-md-4"
-      }, React.createElement("h2", null, "Instructions"), React.createElement("ul", null, React.createElement("li", null, "Setup workspace"), React.createElement("li", null, "Setup Azure container registry"), React.createElement("li", null, "Setup Azure Kubernetes Services"), React.createElement("li", null, "Git clone source code"), React.createElement("li", null, "mvn clean package"), React.createElement("li", null, "docker build"), React.createElement("li", null, "docker tag"), React.createElement("li", null, "acr login"), React.createElement("li", null, "docker push"), React.createElement("li", null, "Docker push to acr"), React.createElement("li", null, "aks get-credentials"), React.createElement("li", null, "kubectl apply")), React.createElement("p", null, React.createElement("a", {
-        className: "btn btn-secondary",
-        href: "#",
-        role: "button"
-      }, "View details \xBB")))), React.createElement("hr", null))), React.createElement("footer", {
-        className: "container"
-      }, React.createElement("p", null, "Jackson Enterprise Architecture 2019-2020")));
+      return (
+        /*#__PURE__*/
+        React.createElement("div", null,
+        /*#__PURE__*/
+        React.createElement("main", {
+          role: "main"
+        },
+        /*#__PURE__*/
+        React.createElement("section", {
+          className: "jumbotron text-center"
+        },
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "container"
+        },
+        /*#__PURE__*/
+        React.createElement("h1", null, "Cloud Native Applications - Demo"),
+        /*#__PURE__*/
+        React.createElement("p", {
+          className: "lead"
+        }, "Cloud-native applications are built from the ground up\u2014optimized for cloud-scale and performance. Typically, designed using microservices architectures, use managed services, and take advantage of continuous delivery to achieve reliability and faster time to market."),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("a", {
+          href: "https://github.com/ummerh/eforms",
+          className: "btn btn-secondary",
+          target: "_blank"
+        }, '  ',
+        /*#__PURE__*/
+        React.createElement("svg", {
+          className: "octicon octicon-mark-github v-align-middle",
+          height: "22",
+          viewBox: "0 0 16 16",
+          version: "1.1",
+          width: "22",
+          "aria-hidden": "true"
+        },
+        /*#__PURE__*/
+        React.createElement("path", {
+          fillRule: "evenodd",
+          d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+        })), '  ', "Github"), '    ',
+        /*#__PURE__*/
+        React.createElement("a", {
+          href: "https://azure.microsoft.com/en-us/overview/cloudnative/",
+          className: "btn btn-secondary",
+          target: "_blank"
+        }, "More from Azure")),
+        /*#__PURE__*/
+        React.createElement("p", {
+          className: "lead text-muted"
+        }, "At its core, microservices is a decomposition technique for overcoming system complexity. It accomplishes this goal by splitting complex systems into multiple independent, narrowly focused services, each with its own isolated business logic and data store. In microservices \xADbased applications, any function can be scaled and deployed separately. Most of all, several teams can simultaneously work on different modules to enhance the overall system\u2019s time\xAD to\xAD market without the risk of stepping on each other. "),
+        /*#__PURE__*/
+        React.createElement("p", {
+          className: "lead text-muted"
+        }, "This application demonstrates capabilities like Single Page Applications, API Services, Stateless Session Management, Auto Scaling, and Continous Rolling Updates. Built using Spring Boot, ReactJS, Redis, Docker, and deployed on Azure Kubernetes Services."),
+        /*#__PURE__*/
+        React.createElement("hr", null),
+        /*#__PURE__*/
+        React.createElement("h2", null, "Reference Architecture"),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("img", {
+          className: "img-fluid",
+          src: "images/aks-reference-architecture.svg",
+          type: "image/svg+xml"
+        })))),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "container"
+        },
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "row"
+        },
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "col-md-4"
+        },
+        /*#__PURE__*/
+        React.createElement("h2", null, "Features"),
+        /*#__PURE__*/
+        React.createElement("p", null, "This application aims to convey some of the cloud-native application characteristics that are listed below;"),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("b", null, "Single Page Applications (SPA)"), "  - is a GUI design paradigm where UI will be delivered as JS components and data loaded on demand through API calls. Modern javascript libraries are supporting a UXI that is pleasant and highly interactive. "),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("b", null, "Stateless Applications"), " - native cloud applications are developed and improved continuously with frequent release cycles; this pace should not impact the user experience or the scalability. By using stateless design and detached session management, a user request can be handled by any node in the cluster and provides an uninterrupted experience to users."),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("b", null, "API"), " based microservices are highly distributed, scalable, domain-centric services delivered as Application Programming Interfaces, typically using technologies like HTTPS and REST. "),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "btn btn-secondary",
+          href: "#",
+          role: "button"
+        }, "View details \xBB"))),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "col-md-4"
+        },
+        /*#__PURE__*/
+        React.createElement("h2", null, "Technologies"),
+        /*#__PURE__*/
+        React.createElement("ul", null,
+        /*#__PURE__*/
+        React.createElement("li", null, "Java"),
+        /*#__PURE__*/
+        React.createElement("li", null, "NodeJS"),
+        /*#__PURE__*/
+        React.createElement("li", null, "ReactJS"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Spring Boot"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Bootstrap"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Redis"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Docker"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Kubernetes")),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "btn btn-secondary",
+          href: "#",
+          role: "button"
+        }, "View details \xBB"))),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "col-md-4"
+        },
+        /*#__PURE__*/
+        React.createElement("h2", null, "Instructions"),
+        /*#__PURE__*/
+        React.createElement("ul", null,
+        /*#__PURE__*/
+        React.createElement("li", null, "Setup workspace"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Setup Azure container registry"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Setup Azure Kubernetes Services"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Git clone source code"),
+        /*#__PURE__*/
+        React.createElement("li", null, "mvn clean package"),
+        /*#__PURE__*/
+        React.createElement("li", null, "docker build"),
+        /*#__PURE__*/
+        React.createElement("li", null, "docker tag"),
+        /*#__PURE__*/
+        React.createElement("li", null, "acr login"),
+        /*#__PURE__*/
+        React.createElement("li", null, "docker push"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Docker push to acr"),
+        /*#__PURE__*/
+        React.createElement("li", null, "aks get-credentials"),
+        /*#__PURE__*/
+        React.createElement("li", null, "kubectl apply")),
+        /*#__PURE__*/
+        React.createElement("p", null,
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "btn btn-secondary",
+          href: "#",
+          role: "button"
+        }, "View details \xBB")))),
+        /*#__PURE__*/
+        React.createElement("hr", null))),
+        /*#__PURE__*/
+        React.createElement("footer", {
+          className: "container"
+        },
+        /*#__PURE__*/
+        React.createElement("p", null, "Jackson Enterprise Architecture 2019-2020")))
+      );
     }
   }]);
 
@@ -36678,47 +36882,236 @@ function (_React$Component2) {
   _createClass(Overview, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
-        className: "card mb-4 shadow-sm"
-      }, React.createElement("svg", {
-        className: "bd-placeholder-img card-img-top",
-        width: "100%",
-        height: "225",
-        xmlns: "http://www.w3.org/2000/svg",
-        preserveAspectRatio: "xMidYMid slice",
-        focusable: "false",
-        role: "img",
-        "aria-label": "Placeholder: Thumbnail"
-      }, React.createElement("title", null, "Placeholder"), React.createElement("rect", {
-        width: "100%",
-        height: "100%",
-        fill: "#55595c"
-      }), React.createElement("text", {
-        x: "50%",
-        y: "50%",
-        fill: "#eceeef",
-        dy: ".3em"
-      }, "Thumbnail")), React.createElement("div", {
-        className: "card-body"
-      }, React.createElement("p", {
-        className: "card-text"
-      }, "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."), React.createElement("div", {
-        className: "d-flex justify-content-between align-items-center"
-      }, React.createElement("div", {
-        className: "btn-group"
-      }, React.createElement("button", {
-        type: "button",
-        className: "btn btn-sm btn-outline-secondary"
-      }, "View"), React.createElement("button", {
-        type: "button",
-        className: "btn btn-sm btn-outline-secondary"
-      }, "Edit")), React.createElement("small", {
-        className: "text-muted"
-      }, "9 mins"))));
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "card mb-4 shadow-sm"
+        },
+        /*#__PURE__*/
+        React.createElement("svg", {
+          className: "bd-placeholder-img card-img-top",
+          width: "100%",
+          height: "225",
+          xmlns: "http://www.w3.org/2000/svg",
+          preserveAspectRatio: "xMidYMid slice",
+          focusable: "false",
+          role: "img",
+          "aria-label": "Placeholder: Thumbnail"
+        },
+        /*#__PURE__*/
+        React.createElement("title", null, "Placeholder"),
+        /*#__PURE__*/
+        React.createElement("rect", {
+          width: "100%",
+          height: "100%",
+          fill: "#55595c"
+        }),
+        /*#__PURE__*/
+        React.createElement("text", {
+          x: "50%",
+          y: "50%",
+          fill: "#eceeef",
+          dy: ".3em"
+        }, "Thumbnail")),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "card-body"
+        },
+        /*#__PURE__*/
+        React.createElement("p", {
+          className: "card-text"
+        }, "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "d-flex justify-content-between align-items-center"
+        },
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "btn-group"
+        },
+        /*#__PURE__*/
+        React.createElement("button", {
+          type: "button",
+          className: "btn btn-sm btn-outline-secondary"
+        }, "View"),
+        /*#__PURE__*/
+        React.createElement("button", {
+          type: "button",
+          className: "btn btn-sm btn-outline-secondary"
+        }, "Edit")),
+        /*#__PURE__*/
+        React.createElement("small", {
+          className: "text-muted"
+        }, "9 mins"))))
+      );
     }
   }]);
 
   return Overview;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/ProductListView.js":
+/*!************************************!*\
+  !*** ./src/jsx/ProductListView.js ***!
+  \************************************/
+/*! exports provided: ProductListView */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductListView", function() { return ProductListView; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+var ProductListView =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProductListView, _React$Component);
+
+  function ProductListView(props) {
+    var _this;
+
+    _classCallCheck(this, ProductListView);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductListView).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      products: []
+    };
+    return _this;
+  }
+
+  _createClass(ProductListView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/products").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          products: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var props = this.props;
+
+      if (this.state.isLoaded) {
+        var userList = this.state.products.map(function (product) {
+          return (
+            /*#__PURE__*/
+            React.createElement("tr", {
+              key: product.productId
+            },
+            /*#__PURE__*/
+            React.createElement("td", {
+              scope: "row"
+            }, product.category.categoryName),
+            /*#__PURE__*/
+            React.createElement("td", {
+              scope: "row"
+            }, product.productName),
+            /*#__PURE__*/
+            React.createElement("td", null, product.productDescription),
+            /*#__PURE__*/
+            React.createElement("td", null, product.unitCost),
+            /*#__PURE__*/
+            React.createElement("td", null, product.unitType),
+            /*#__PURE__*/
+            React.createElement("td", null,
+            /*#__PURE__*/
+            React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+              className: "btn btn-outline-primary",
+              role: "button",
+              to: "/app/demo/manage/products/".concat(product.productId)
+            }, "edit")))
+          );
+        });
+        return (
+          /*#__PURE__*/
+          React.createElement("table", {
+            className: "table table-striped table-hover"
+          },
+          /*#__PURE__*/
+          React.createElement("thead", null,
+          /*#__PURE__*/
+          React.createElement("tr", null,
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Category"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Description"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Unit Cost ($)"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Unit Type"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Action"))),
+          /*#__PURE__*/
+          React.createElement("tbody", null, userList))
+        );
+      }
+
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
+    }
+  }]);
+
+  return ProductListView;
 }(React.Component);
 
 /***/ }),
@@ -36796,25 +37189,53 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (this.state.isLoaded) {
-        return React.createElement("table", {
-          className: "table"
-        }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
-          scope: "col"
-        }, "ID"), React.createElement("th", {
-          scope: "col"
-        }, "Creation Time"), React.createElement("th", {
-          scope: "col"
-        }, "Last Accessed"))), React.createElement("tbody", null, React.createElement("tr", null, React.createElement("td", {
-          scope: "row"
-        }, this.state.status.id), React.createElement("td", null, this.state.status.createdTime), React.createElement("td", null, this.state.status.lastAccessedTime))));
+        return (
+          /*#__PURE__*/
+          React.createElement("table", {
+            className: "table"
+          },
+          /*#__PURE__*/
+          React.createElement("thead", null,
+          /*#__PURE__*/
+          React.createElement("tr", null,
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "ID"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Creation Time"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Last Accessed"))),
+          /*#__PURE__*/
+          React.createElement("tbody", null,
+          /*#__PURE__*/
+          React.createElement("tr", null,
+          /*#__PURE__*/
+          React.createElement("td", {
+            scope: "row"
+          }, this.state.status.id),
+          /*#__PURE__*/
+          React.createElement("td", null, this.state.status.createdTime),
+          /*#__PURE__*/
+          React.createElement("td", null, this.state.status.lastAccessedTime))))
+        );
       }
 
-      return React.createElement("div", {
-        className: "spinner-border",
-        role: "status"
-      }, React.createElement("span", {
-        className: "sr-only"
-      }, "Loading..."));
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
     }
   }]);
 
@@ -36823,15 +37244,16 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./src/jsx/index.js":
-/*!**************************!*\
-  !*** ./src/jsx/index.js ***!
-  \**************************/
-/*! no exports provided */
+/***/ "./src/jsx/UserListView.js":
+/*!*********************************!*\
+  !*** ./src/jsx/UserListView.js ***!
+  \*********************************/
+/*! exports provided: UserListView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserListView", function() { return UserListView; });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -36855,110 +37277,155 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
-var HomeWindow = __webpack_require__(/*! ./HomeWindow.js */ "./src/jsx/HomeWindow.js").HomeWindow;
 
-var Cart = __webpack_require__(/*! ./Cart.js */ "./src/jsx/Cart.js").Cart;
-
-var CartReview = __webpack_require__(/*! ./CartReview.js */ "./src/jsx/CartReview.js").CartReview;
-
-var SessionStatus = __webpack_require__(/*! ./SessionStatus.js */ "./src/jsx/SessionStatus.js").SessionStatus;
-
-
-
-var App =
+var UserListView =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(App, _React$Component);
+  _inherits(UserListView, _React$Component);
 
-  function App() {
-    _classCallCheck(this, App);
+  function UserListView(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _classCallCheck(this, UserListView);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserListView).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      users: []
+    };
+    return _this;
   }
 
-  _createClass(App, [{
+  _createClass(UserListView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/users").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          users: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["HashRouter"], null, React.createElement("div", null, React.createElement("nav", {
-        className: "navbar navbar-expand-lg navbar-dark bg-dark"
-      }, React.createElement("a", {
-        className: "navbar-brand",
-        href: "/"
-      }, "E-Forms"), React.createElement("button", {
-        className: "navbar-toggler",
-        type: "button",
-        "data-toggle": "collapse",
-        "data-target": "#navbarSupportedContent",
-        "aria-controls": "navbarSupportedContent",
-        "aria-expanded": "false",
-        "aria-label": "Toggle navigation"
-      }, React.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), React.createElement("div", {
-        className: "collapse navbar-collapse",
-        id: "navbarSupportedContent"
-      }, React.createElement("ul", {
-        className: "navbar-nav mr-auto"
-      }, React.createElement("li", {
-        className: "nav-item"
-      }, React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-        className: "nav-link",
-        to: "/app/cart/checkout"
-      }, "Shopping Cart")), React.createElement("li", {
-        className: "nav-item dropdown"
-      }, React.createElement("a", {
-        className: "nav-link dropdown-toggle",
-        href: "#",
-        id: "navbarDropdown",
-        role: "button",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, " Session "), React.createElement("div", {
-        className: "dropdown-menu",
-        "aria-labelledby": "navbarDropdown"
-      }, React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-        className: "dropdown-item",
-        to: "/app/session/status"
-      }, "Status"), React.createElement("div", {
-        className: "dropdown-divider"
-      }), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-        className: "dropdown-item",
-        to: "/app/session/end"
-      }, "End"))), React.createElement("li", {
-        className: "nav-item"
-      }, React.createElement("a", {
-        className: "nav-link disabled",
-        href: "#",
-        "aria-disabled": "true"
-      }, "API"))))), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null, React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/",
-        exact: true
-      }, React.createElement(HomeWindow, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/cart/checkout",
-        strict: true
-      }, React.createElement(Cart, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/session/status",
-        strict: true
-      }, React.createElement(SessionStatus, null)), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/session/end",
-        strict: true
-      }, React.createElement("span", null, React.createElement("br", null), React.createElement("div", {
-        className: "spinner-border",
-        role: "status"
-      }, React.createElement("span", {
-        className: "sr-only"
-      }, "Loading...")))), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-        path: "/app/cart/review",
-        strict: true
-      }, React.createElement(CartReview, null)))));
+      if (this.state.isLoaded) {
+        var userList = this.state.users.map(function (usr) {
+          var btn =
+          /*#__PURE__*/
+          React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+            className: "btn btn-outline-primary",
+            role: "button",
+            to: "/app/demo/manage/user/".concat(usr.userId)
+          }, "Edit Products");
+
+          if (usr.roleName == "Manager") {
+            btn =
+            /*#__PURE__*/
+            React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+              className: "btn btn-outline-primary",
+              role: "button",
+              to: "/app/demo/approve/products"
+            }, "Approve Changes");
+          }
+
+          return (
+            /*#__PURE__*/
+            React.createElement("tr", {
+              key: usr.userId
+            },
+            /*#__PURE__*/
+            React.createElement("td", null, usr.roleName),
+            /*#__PURE__*/
+            React.createElement("td", null, usr.userName),
+            /*#__PURE__*/
+            React.createElement("td", null, usr.firstName),
+            /*#__PURE__*/
+            React.createElement("td", null, usr.lastName),
+            /*#__PURE__*/
+            React.createElement("td", null, btn))
+          );
+        });
+        return (
+          /*#__PURE__*/
+          React.createElement("div", null,
+          /*#__PURE__*/
+          React.createElement("table", {
+            className: "table table-striped table-hover"
+          },
+          /*#__PURE__*/
+          React.createElement("thead", null,
+          /*#__PURE__*/
+          React.createElement("tr", null,
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Role"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Employee Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "First Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Last Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Action"))),
+          /*#__PURE__*/
+          React.createElement("tbody", null, userList)))
+        );
+      }
+
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
     }
   }]);
 
-  return App;
+  return UserListView;
 }(React.Component);
 
-ReactDOM.render(React.createElement(App, null), document.getElementById("homeContent"));
+/***/ }),
+
+/***/ "./src/jsx/index.js":
+/*!**************************!*\
+  !*** ./src/jsx/index.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var Home = __webpack_require__(/*! ./Home.js */ "./src/jsx/Home.js").Home;
+
+ReactDOM.render(
+/*#__PURE__*/
+React.createElement(Home, null), document.getElementById("homeContent"));
 
 /***/ })
 

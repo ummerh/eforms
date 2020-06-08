@@ -23,7 +23,7 @@ public class CustomerAPI {
 	}
 
 	@RequestMapping("/api/customers/{id}")
-	public Customer getById(@PathVariable Integer id) {
+	public Customer getById(@PathVariable String id) {
 		return customerRepository.findById(id).get();
 	}
 
@@ -34,7 +34,7 @@ public class CustomerAPI {
 	}
 
 	@RequestMapping(value = "/api/customers/{id}", method = RequestMethod.PUT)
-	public Customer put(@PathVariable Integer id, @RequestBody Customer rec) {
+	public Customer put(@PathVariable String id, @RequestBody Customer rec) {
 		Customer old = customerRepository.findById(id).get();
 		if (old != null) {
 			rec.setCustomerId(id);

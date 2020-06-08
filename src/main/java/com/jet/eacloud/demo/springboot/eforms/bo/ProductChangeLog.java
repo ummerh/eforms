@@ -10,12 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Product implements Serializable {
+public class ProductChangeLog implements Serializable {
 	@Id
 	@Column(nullable = false, length = 256)
-	private String productId;
+	private String productChangeLogId;
 
-	private String categoryId;
+	@Column(nullable = false, length = 256)
+	private String productId;
 
 	@Column(nullable = false, length = 256)
 	private String productName;
@@ -32,13 +33,14 @@ public class Product implements Serializable {
 
 	private boolean active;
 
-	private Timestamp lastUpdated;
-
-	private Integer productChangeLogId;
+	private String changedBy;
+	private Timestamp changeTs;
+	private String approvedBy;
+	private Timestamp approvedTs;
 
 	@ManyToOne
-	@JoinColumn(name = "categoryId", insertable = false, updatable = false)
-	private Category category;
+	@JoinColumn(name = "productId", insertable = false, updatable = false)
+	private Product product;
 
 	public String getProductId() {
 		return productId;
@@ -46,14 +48,6 @@ public class Product implements Serializable {
 
 	public void setProductId(String productId) {
 		this.productId = productId;
-	}
-
-	public String getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public String getProductName() {
@@ -80,22 +74,6 @@ public class Product implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getLastUpdated() {
-		return lastUpdated;
-	}
-
-	public void setLastUpdated(Timestamp lastUpdated) {
-		this.lastUpdated = lastUpdated;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
 	public String getProductImageURL() {
 		return productImageURL;
 	}
@@ -120,12 +98,52 @@ public class Product implements Serializable {
 		this.unitCost = unitCost;
 	}
 
-	public Integer getProductChangeLogId() {
+	public String getProductChangeLogId() {
 		return productChangeLogId;
 	}
 
-	public void setProductChangeLogId(Integer productChangeLogId) {
+	public void setProductChangeLogId(String productChangeLogId) {
 		this.productChangeLogId = productChangeLogId;
+	}
+
+	public String getChangedBy() {
+		return changedBy;
+	}
+
+	public void setChangedBy(String changedBy) {
+		this.changedBy = changedBy;
+	}
+
+	public Timestamp getChangeTs() {
+		return changeTs;
+	}
+
+	public void setChangeTs(Timestamp changeTs) {
+		this.changeTs = changeTs;
+	}
+
+	public String getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(String approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	public Timestamp getApprovedTs() {
+		return approvedTs;
+	}
+
+	public void setApprovedTs(Timestamp approvedTs) {
+		this.approvedTs = approvedTs;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 }

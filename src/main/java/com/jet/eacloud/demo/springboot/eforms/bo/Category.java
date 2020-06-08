@@ -5,60 +5,68 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Category implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer categoryId;
-    @Column(nullable = false, length = 256)
-    private String categoryName;
-    @Column(nullable = true, length = 1024)
-    private String categoryDescription;
-    private boolean active;
-    private Timestamp lastUpdated;
+public class Category implements Serializable {
+	@Id
+	@Column(nullable = false, length = 256)
+	private String categoryId;
+	@Column(nullable = false, length = 256)
+	private String categoryName;
+	@Column(nullable = true, length = 1024)
+	private String categoryDescription;
+	private boolean active;
+	private Timestamp lastUpdated;
+	@Column(nullable = true, length = 1024)
+	private String categoryImageURL;
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
+	public String getCategoryId() {
+		return categoryId;
+	}
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
 
-    public String getCategoryName() {
-        return categoryName;
-    }
+	public String getCategoryName() {
+		return categoryName;
+	}
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 
-    public String getCategoryDescription() {
-        return categoryDescription;
-    }
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
 
-    public void setCategoryDescription(String categoryDescription) {
-        this.categoryDescription = categoryDescription;
-    }
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
 
-    public boolean getActive() {
-        return active;
-    }
+	public boolean getActive() {
+		return active;
+	}
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
-    public Timestamp getLastUpdated() {
-        return lastUpdated;
-    }
+	public Timestamp getLastUpdated() {
+		return lastUpdated;
+	}
 
-    public void setLastUpdated(Timestamp lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
+	public void setLastUpdated(Timestamp lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+
+	public String getCategoryImageURL() {
+		return categoryImageURL;
+	}
+
+	public void setCategoryImageURL(String categoryImageURL) {
+		this.categoryImageURL = categoryImageURL;
+	}
 
 }

@@ -23,7 +23,7 @@ public class CategoryAPI {
 	}
 
 	@RequestMapping("/api/categories/{id}")
-	public Category getById(@PathVariable Integer id) {
+	public Category getById(@PathVariable String id) {
 		return categoryRepository.findById(id).get();
 	}
 
@@ -34,7 +34,7 @@ public class CategoryAPI {
 	}
 
 	@RequestMapping(value = "/api/categories/{id}", method = RequestMethod.PUT)
-	public Category put(@PathVariable Integer id, @RequestBody Category rec) {
+	public Category put(@PathVariable String id, @RequestBody Category rec) {
 		Category old = categoryRepository.findById(id).get();
 		if (old != null) {
 			rec.setCategoryId(id);

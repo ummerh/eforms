@@ -26,12 +26,12 @@ public class ProductAPI {
 	}
 
 	@RequestMapping("/api/categories/{id}/products")
-	public List<Product> getAllByCategory(@PathVariable Integer id) {
+	public List<Product> getAllByCategory(@PathVariable String id) {
 		return productRepository.findByCategoryIdOrderByProductName(id);
 	}
 
 	@RequestMapping("/api/products/{id}")
-	public Product getById(@PathVariable Integer id) {
+	public Product getById(@PathVariable String id) {
 		return productRepository.findById(id).get();
 	}
 
@@ -43,10 +43,10 @@ public class ProductAPI {
 	}
 
 	@RequestMapping(value = "/api/products/{id}", method = RequestMethod.PUT)
-	public Product put(@PathVariable Integer id, @RequestBody Product rec) {
+	public Product put(@PathVariable String id, @RequestBody Product rec) {
 		Product old = productRepository.findById(id).get();
 		if (old != null) {
-			rec.setProductId(id.intValue());
+			rec.setProductId(id);
 			rec.setLastUpdated(new Timestamp(System.currentTimeMillis()));
 			productRepository.save(rec);
 		}

@@ -23,7 +23,7 @@ public class UserAPI {
 	}
 
 	@RequestMapping("/api/users/{id}")
-	public User getById(@PathVariable Integer id) {
+	public User getById(@PathVariable String id) {
 		return userRepository.findById(id).get();
 	}
 
@@ -34,7 +34,7 @@ public class UserAPI {
 	}
 
 	@RequestMapping(value = "/api/users/{id}", method = RequestMethod.PUT)
-	public User put(@PathVariable Integer id, @RequestBody User rec) {
+	public User put(@PathVariable String id, @RequestBody User rec) {
 		User old = userRepository.findById(id).get();
 		if (old != null) {
 			rec.setUserId(id);

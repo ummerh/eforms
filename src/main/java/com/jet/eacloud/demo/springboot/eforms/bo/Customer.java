@@ -11,8 +11,8 @@ import javax.persistence.Id;
 @Entity
 public class Customer implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer customerId;
+	@Column(nullable = false, length = 256)
+	private String customerId;
 
 	@Column(unique = true, nullable = false, length = 1024)
 	private String shortName;
@@ -29,11 +29,11 @@ public class Customer implements Serializable {
 	@Column(nullable = false, length = 256)
 	private String password;
 
-	public Integer getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
