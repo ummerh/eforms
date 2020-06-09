@@ -43,7 +43,7 @@ export class ProductListView extends React.Component {
 					<td>{product.productDescription}</td>
 					<td>{product.unitCost}</td>
 					<td>{product.unitType}</td>
-					<td><Link className="btn btn-outline-primary" role="button" to={`/app/demo/manage/products/${product.productId}`} >edit</Link></td>
+					<td><Link className="btn btn-outline-primary" role="button" to={`/app/demo/view/products/${product.productId}`} >view</Link>{'\u000A'}<Link className="btn btn-outline-primary" role="button" to={`/app/demo/edit/products/${product.productId}`} >edit</Link></td>
 				</tr>);
 			}
 			);

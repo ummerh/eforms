@@ -13,8 +13,13 @@ export class UserListView extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { isLoaded: false, users: [] };
+		this.setUserSession = this.setUserSession.bind(this);
 	}
 
+	setUserSession(event, userId) {
+		console.log(event);
+		console.log(userId);
+	}
 	componentDidMount() {
 		fetch("/api/users")
 			.then(res => res.json())
@@ -35,12 +40,12 @@ export class UserListView extends React.Component {
 	}
 	render() {
 		if (this.state.isLoaded) {
-			
+		   var setUserSession = this.setUserSession;
 			var userList = this.state.users.map(function(usr) {
-				var btn = <Link className="btn btn-outline-primary" role="button" to={`/app/demo/manage/user/${usr.userId}`} >Edit Products</Link>
-				if(usr.roleName == "Manager"){
-					btn = <Link className="btn btn-outline-primary" role="button" to={`/app/demo/approve/products`} >Approve Changes</Link>
-				} 
+				var btn = <Link className="btn btn-outline-primary" role="button" to={`/app/demo/manage/user/${usr.userId}`} onClick={setUserSession(usr.userId)} >View Products</Link>
+				if (usr.roleName == "Manager") {
+					btn = <Link className="btn btn-outline-primary" role="button" to={`/app/demo/view/productChangeLog`}>Approve Changes</Link>
+				}
 				return (<tr key={usr.userId}>
 					<td>{usr.roleName}</td>
 					<td>{usr.userName}</td>
@@ -55,7 +60,7 @@ export class UserListView extends React.Component {
 					<table className="table table-striped table-hover">
 						<thead>
 							<tr>
-							    <th scope="col">Role</th>
+								<th scope="col">Role</th>
 								<th scope="col">Employee Name</th>
 								<th scope="col">First Name</th>
 								<th scope="col">Last Name</th>

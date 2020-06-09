@@ -36431,7 +36431,13 @@ var DemoApp = __webpack_require__(/*! ./DemoApp.js */ "./src/jsx/DemoApp.js").De
 
 var ProductListView = __webpack_require__(/*! ./ProductListView.js */ "./src/jsx/ProductListView.js").ProductListView;
 
+var ProductDetailView = __webpack_require__(/*! ./ProductDetailView.js */ "./src/jsx/ProductDetailView.js").ProductDetailView;
+
 var CategoryGridView = __webpack_require__(/*! ./CategoryGridView.js */ "./src/jsx/CategoryGridView.js").CategoryGridView;
+
+var ProductChangeLogForm = __webpack_require__(/*! ./ProductChangeLogForm.js */ "./src/jsx/ProductChangeLogForm.js").ProductChangeLogForm;
+
+var ProductChangeLogListView = __webpack_require__(/*! ./ProductChangeLogListView.js */ "./src/jsx/ProductChangeLogListView.js").ProductChangeLogListView;
 
 
 var Home =
@@ -36556,33 +36562,58 @@ function (_React$Component) {
         /*#__PURE__*/
         React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
           path: "/app/demo/manage/user/:userId",
-          exact: true
-        },
-        /*#__PURE__*/
-        React.createElement(ProductListView, {
-          manage: "true"
-        })),
+          exact: true,
+          render: function render(props) {
+            return (
+              /*#__PURE__*/
+              React.createElement(ProductListView, props)
+            );
+          }
+        }),
         /*#__PURE__*/
         React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
           path: "/app/demo/shop/customer/:customerId",
-          exact: true
-        },
-        /*#__PURE__*/
-        React.createElement(CategoryGridView, null)),
-        /*#__PURE__*/
-        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-          path: "/app/demo/manage/products/:productId",
-          exact: true
-        },
-        /*#__PURE__*/
-        React.createElement("h5", null, "Product Detail")),
+          exact: true,
+          render: function render(props) {
+            return (
+              /*#__PURE__*/
+              React.createElement(CategoryGridView, props)
+            );
+          }
+        }),
         /*#__PURE__*/
         React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-          path: "/app/demo/approve/products",
-          exact: true
-        },
+          path: "/app/demo/view/products/:productId",
+          exact: true,
+          render: function render(props) {
+            return (
+              /*#__PURE__*/
+              React.createElement(ProductDetailView, props)
+            );
+          }
+        }),
         /*#__PURE__*/
-        React.createElement("h5", null, "Approve Change Log")),
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/edit/products/:productId",
+          exact: true,
+          render: function render(props) {
+            return (
+              /*#__PURE__*/
+              React.createElement(ProductChangeLogForm, props)
+            );
+          }
+        }),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/app/demo/view/productChangeLog",
+          exact: true,
+          render: function render(props) {
+            return (
+              /*#__PURE__*/
+              React.createElement(ProductChangeLogListView, props)
+            );
+          }
+        }),
         /*#__PURE__*/
         React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
           path: "/app/demo/shop/categories/:categoryId",
@@ -36952,6 +36983,611 @@ function (_React$Component2) {
 
 /***/ }),
 
+/***/ "./src/jsx/ProductChangeLogForm.js":
+/*!*****************************************!*\
+  !*** ./src/jsx/ProductChangeLogForm.js ***!
+  \*****************************************/
+/*! exports provided: ProductChangeLogForm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductChangeLogForm", function() { return ProductChangeLogForm; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+var ProductChangeLogForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProductChangeLogForm, _React$Component);
+
+  function ProductChangeLogForm(props) {
+    var _this;
+
+    _classCallCheck(this, ProductChangeLogForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductChangeLogForm).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      product: {},
+      changeLog: {}
+    };
+    _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    _this.submitChange = _this.submitChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ProductChangeLogForm, [{
+    key: "handleInputChange",
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.name === 'isGoing' ? target.checked : target.value;
+      var name = target.id;
+      var newProd = this.state.product;
+      newProd[name] = value;
+      this.setState({
+        product: newProd
+      });
+    }
+  }, {
+    key: "submitChange",
+    value: function submitChange(event) {
+      var _this2 = this;
+
+      console.log(this.state.product);
+      fetch("/api/productChangeLog/init", {
+        method: 'POST',
+        body: JSON.stringify(this.state.product),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          product: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      var productId = this.props.match.params.productId;
+      fetch("/api/products/" + productId).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this3.setState({
+          isLoaded: true,
+          product: result
+        });
+      }, function (error) {
+        _this3.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.isLoaded) {
+        return (
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "col-lg-6"
+          },
+          /*#__PURE__*/
+          React.createElement("h4", null, "Product Change Request"),
+          /*#__PURE__*/
+          React.createElement("form", null,
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "form-group"
+          },
+          /*#__PURE__*/
+          React.createElement("label", {
+            htmlFor: "productName"
+          }, "Product Name"),
+          /*#__PURE__*/
+          React.createElement("input", {
+            type: "text",
+            className: "form-control",
+            id: "productName",
+            placeholder: "product name",
+            value: this.state.product.productName,
+            onChange: this.handleInputChange
+          })),
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "form-group"
+          },
+          /*#__PURE__*/
+          React.createElement("label", {
+            htmlFor: "productDescription"
+          }, "Product Description"),
+          /*#__PURE__*/
+          React.createElement("textarea", {
+            className: "form-control",
+            id: "productDescription",
+            rows: "3",
+            value: this.state.product.productDescription,
+            onChange: this.handleInputChange
+          })),
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "form-group"
+          },
+          /*#__PURE__*/
+          React.createElement("label", {
+            htmlFor: "unitType"
+          }, "Unit Type"),
+          /*#__PURE__*/
+          React.createElement("input", {
+            type: "text",
+            className: "form-control",
+            id: "unitType",
+            placeholder: "each",
+            value: this.state.product.unitType,
+            onChange: this.handleInputChange
+          })),
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "form-group"
+          },
+          /*#__PURE__*/
+          React.createElement("label", {
+            htmlFor: "unitCost"
+          }, "Unit Cost"),
+          /*#__PURE__*/
+          React.createElement("input", {
+            type: "number",
+            className: "form-control",
+            id: "unitCost",
+            placeholder: "$0.00",
+            value: this.state.product.unitCost,
+            onChange: this.handleInputChange
+          })),
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "form-group"
+          },
+          /*#__PURE__*/
+          React.createElement("label", {
+            htmlFor: "productImageURL"
+          }, "Product Image URL"),
+          /*#__PURE__*/
+          React.createElement("input", {
+            type: "text",
+            className: "form-control",
+            id: "productImageURL",
+            placeholder: "https://",
+            value: this.state.product.productImageURL,
+            onChange: this.handleInputChange
+          }))),
+          /*#__PURE__*/
+          React.createElement("button", {
+            type: "button",
+            className: "btn btn-primary",
+            onClick: this.submitChange
+          }, "Submit"))
+        );
+      }
+
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
+    }
+  }]);
+
+  return ProductChangeLogForm;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/ProductChangeLogListView.js":
+/*!*********************************************!*\
+  !*** ./src/jsx/ProductChangeLogListView.js ***!
+  \*********************************************/
+/*! exports provided: ProductChangeLogListView */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductChangeLogListView", function() { return ProductChangeLogListView; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+var ProductChangeLogListView =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProductChangeLogListView, _React$Component);
+
+  function ProductChangeLogListView(props) {
+    var _this;
+
+    _classCallCheck(this, ProductChangeLogListView);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductChangeLogListView).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      products: []
+    };
+    _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ProductChangeLogListView, [{
+    key: "handleInputChange",
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.name === 'isGoing' ? target.checked : target.value;
+      var name = target.id;
+      /*let newProd = this.state.product;
+      newProd[name] = value;
+      this.setState({
+      	product: newProd
+      });*/
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/productChangeLog").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          products: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.isLoaded) {
+        var handleInputChange = this.handleInputChange;
+        var userList = this.state.products.map(function (product) {
+          return (
+            /*#__PURE__*/
+            React.createElement("tr", {
+              key: product.productChangeLogId
+            },
+            /*#__PURE__*/
+            React.createElement("td", {
+              scope: "row"
+            }, product.productName),
+            /*#__PURE__*/
+            React.createElement("td", null, product.productDescription),
+            /*#__PURE__*/
+            React.createElement("td", null, product.unitCost),
+            /*#__PURE__*/
+            React.createElement("td", null, product.unitType),
+            /*#__PURE__*/
+            React.createElement("td", null, product.changeStatus),
+            /*#__PURE__*/
+            React.createElement("td", null,
+            /*#__PURE__*/
+            React.createElement("div", {
+              className: "form-group"
+            },
+            /*#__PURE__*/
+            React.createElement("textarea", {
+              className: "form-control",
+              id: "approverComment",
+              rows: "2",
+              value: product.approverComment,
+              onChange: handleInputChange
+            }))),
+            /*#__PURE__*/
+            React.createElement("td", null,
+            /*#__PURE__*/
+            React.createElement("div", {
+              className: "form-check"
+            },
+            /*#__PURE__*/
+            React.createElement("input", {
+              className: "form-check-input",
+              type: "radio",
+              name: "approved",
+              id: "approved",
+              value: "true"
+            }),
+            /*#__PURE__*/
+            React.createElement("label", {
+              className: "form-check-label",
+              htmlFor: "approved"
+            }, "yes")),
+            /*#__PURE__*/
+            React.createElement("div", {
+              className: "form-check"
+            },
+            /*#__PURE__*/
+            React.createElement("input", {
+              className: "form-check-input",
+              type: "radio",
+              name: "approved",
+              id: "approved",
+              value: "false"
+            }),
+            /*#__PURE__*/
+            React.createElement("label", {
+              className: "form-check-label",
+              htmlFor: "approved"
+            }, "no"))),
+            /*#__PURE__*/
+            React.createElement("td", null,
+            /*#__PURE__*/
+            React.createElement("button", {
+              type: "button",
+              className: "btn btn-sm btn-primary"
+            }, "apply")))
+          );
+        });
+        return (
+          /*#__PURE__*/
+          React.createElement("table", {
+            className: "table table-striped table-hover"
+          },
+          /*#__PURE__*/
+          React.createElement("thead", null,
+          /*#__PURE__*/
+          React.createElement("tr", null,
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Name"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Description"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Unit Cost ($)"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Unit Type"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Status"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Comment"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Approve?"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
+          }, "Action"))),
+          /*#__PURE__*/
+          React.createElement("tbody", null, userList))
+        );
+      }
+
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
+    }
+  }]);
+
+  return ProductChangeLogListView;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/ProductDetailView.js":
+/*!**************************************!*\
+  !*** ./src/jsx/ProductDetailView.js ***!
+  \**************************************/
+/*! exports provided: ProductDetailView */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductDetailView", function() { return ProductDetailView; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+var ProductDetailView =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProductDetailView, _React$Component);
+
+  function ProductDetailView(props) {
+    var _this;
+
+    _classCallCheck(this, ProductDetailView);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductDetailView).call(this, props));
+    _this.state = {
+      isLoaded: false,
+      product: {}
+    };
+    return _this;
+  }
+
+  _createClass(ProductDetailView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var productId = this.props.match.params.productId;
+      console.log("/api/products/" + productId);
+      fetch("/api/products/" + productId).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          product: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.isLoaded) {
+        return (
+          /*#__PURE__*/
+          React.createElement("div", {
+            className: "col-lg-6"
+          },
+          /*#__PURE__*/
+          React.createElement("h4", null, "Viewing Product - ", this.state.product.productName, " "),
+          /*#__PURE__*/
+          React.createElement("ul", {
+            className: "list-group list-group-flush"
+          },
+          /*#__PURE__*/
+          React.createElement("li", {
+            className: "list-group-item"
+          }, "Name: ", this.state.product.productName),
+          /*#__PURE__*/
+          React.createElement("li", {
+            className: "list-group-item"
+          }, "Description: ", this.state.product.productDescription),
+          /*#__PURE__*/
+          React.createElement("li", {
+            className: "list-group-item"
+          }, "Unit: ", this.state.product.unitType),
+          /*#__PURE__*/
+          React.createElement("li", {
+            className: "list-group-item"
+          }, "Unit Cost: ", this.state.product.unitCost),
+          /*#__PURE__*/
+          React.createElement("li", {
+            className: "list-group-item"
+          }, "Image : ",
+          /*#__PURE__*/
+          React.createElement("img", {
+            src: this.state.product.productImageURL,
+            alt: this.state.product.productImageURL,
+            className: "img-thumbnail"
+          }))))
+        );
+      }
+
+      return (
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "spinner-border",
+          role: "status"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "sr-only"
+        }, "Loading..."))
+      );
+    }
+  }]);
+
+  return ProductDetailView;
+}(React.Component);
+
+/***/ }),
+
 /***/ "./src/jsx/ProductListView.js":
 /*!************************************!*\
   !*** ./src/jsx/ProductListView.js ***!
@@ -37055,7 +37691,13 @@ function (_React$Component) {
             React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
               className: "btn btn-outline-primary",
               role: "button",
-              to: "/app/demo/manage/products/".concat(product.productId)
+              to: "/app/demo/view/products/".concat(product.productId)
+            }, "view"), "\n",
+            /*#__PURE__*/
+            React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+              className: "btn btn-outline-primary",
+              role: "button",
+              to: "/app/demo/edit/products/".concat(product.productId)
             }, "edit")))
           );
         });
@@ -37265,9 +37907,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -37293,10 +37935,17 @@ function (_React$Component) {
       isLoaded: false,
       users: []
     };
+    _this.setUserSession = _this.setUserSession.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(UserListView, [{
+    key: "setUserSession",
+    value: function setUserSession(event, userId) {
+      console.log(event);
+      console.log(userId);
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -37319,14 +37968,16 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (this.state.isLoaded) {
+        var setUserSession = this.setUserSession;
         var userList = this.state.users.map(function (usr) {
           var btn =
           /*#__PURE__*/
           React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
             className: "btn btn-outline-primary",
             role: "button",
-            to: "/app/demo/manage/user/".concat(usr.userId)
-          }, "Edit Products");
+            to: "/app/demo/manage/user/".concat(usr.userId),
+            onClick: setUserSession(usr.userId)
+          }, "View Products");
 
           if (usr.roleName == "Manager") {
             btn =
@@ -37334,7 +37985,7 @@ function (_React$Component) {
             React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
               className: "btn btn-outline-primary",
               role: "button",
-              to: "/app/demo/approve/products"
+              to: "/app/demo/view/productChangeLog"
             }, "Approve Changes");
           }
 

@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: eforms
-        image: eacloudacr.azurecr.io/eacloud/eforms:latest
+        image: eacloudacr.azurecr.io/eacloud/eforms:0.0.1
         ports:
         - containerPort: 8080
 ---

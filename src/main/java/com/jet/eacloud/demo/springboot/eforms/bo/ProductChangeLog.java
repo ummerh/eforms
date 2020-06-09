@@ -11,6 +11,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ProductChangeLog implements Serializable {
+
+	public ProductChangeLog() {
+	}
+
+	public ProductChangeLog(Product product) {
+		super();
+		this.productId = product.getProductId();
+		this.productName = product.getProductName();
+		this.productDescription = product.getProductDescription();
+		this.productImageURL = product.getProductImageURL();
+		this.unitType = product.getUnitType();
+		this.unitCost = product.getUnitCost();
+		this.active = product.isActive();
+		this.product = product;
+	}
+
 	@Id
 	@Column(nullable = false, length = 256)
 	private String productChangeLogId;
@@ -33,14 +49,33 @@ public class ProductChangeLog implements Serializable {
 
 	private boolean active;
 
+	@Column(nullable = false, length = 256)
+	private String changeStatus;
+
+	@Column(nullable = false, length = 256)
 	private String changedBy;
+
 	private Timestamp changeTs;
+
+	@Column(nullable = false, length = 256)
 	private String approvedBy;
+
 	private Timestamp approvedTs;
+
+	@Column(nullable = true, length = 1024)
+	private String approverComment;
 
 	@ManyToOne
 	@JoinColumn(name = "productId", insertable = false, updatable = false)
 	private Product product;
+
+	@ManyToOne
+	@JoinColumn(name = "approvedBy", insertable = false, updatable = false)
+	private User approvedByUser;
+
+	@ManyToOne
+	@JoinColumn(name = "approvedBy", insertable = false, updatable = false)
+	private User changedByUser;
 
 	public String getProductId() {
 		return productId;
@@ -144,6 +179,38 @@ public class ProductChangeLog implements Serializable {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public String getChangeStatus() {
+		return changeStatus;
+	}
+
+	public void setChangeStatus(String changeStatus) {
+		this.changeStatus = changeStatus;
+	}
+
+	public User getApprovedByUser() {
+		return approvedByUser;
+	}
+
+	public void setApprovedByUser(User approvedByUser) {
+		this.approvedByUser = approvedByUser;
+	}
+
+	public User getChangedByUser() {
+		return changedByUser;
+	}
+
+	public void setChangedByUser(User changedByUser) {
+		this.changedByUser = changedByUser;
+	}
+
+	public String getApproverComment() {
+		return approverComment;
+	}
+
+	public void setApproverComment(String approverComment) {
+		this.approverComment = approverComment;
 	}
 
 }

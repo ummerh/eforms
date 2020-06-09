@@ -4,7 +4,11 @@ const HomeWindow = require("./HomeWindow.js").HomeWindow;
 const SessionStatus = require("./SessionStatus.js").SessionStatus;
 const DemoApp = require("./DemoApp.js").DemoApp;
 const ProductListView = require("./ProductListView.js").ProductListView;
+const ProductDetailView = require("./ProductDetailView.js").ProductDetailView;
 const CategoryGridView = require("./CategoryGridView.js").CategoryGridView;
+const ProductChangeLogForm = require("./ProductChangeLogForm.js").ProductChangeLogForm;
+const ProductChangeLogListView = require("./ProductChangeLogListView.js").ProductChangeLogListView;
+
 import {
 	HashRouter as Router,
 	Switch,
@@ -50,18 +54,11 @@ export class Home extends React.Component {
 						<Route path="/app/demo" exact>
 							<DemoApp />
 						</Route>
-						<Route path={`/app/demo/manage/user/:userId`} exact>
-							<ProductListView manage="true" />
-						</Route>
-						<Route path={`/app/demo/shop/customer/:customerId`} exact>
-							<CategoryGridView />
-						</Route>
-						<Route path={`/app/demo/manage/products/:productId`} exact>
-							<h5>Product Detail</h5>
-						</Route>
-						<Route path={`/app/demo/approve/products`} exact>
-							<h5>Approve Change Log</h5>
-						</Route>
+						<Route path={`/app/demo/manage/user/:userId`} exact render={(props) => <ProductListView {...props} />} />
+						<Route path={`/app/demo/shop/customer/:customerId`} exact render={(props) => <CategoryGridView {...props} />} />
+						<Route path={`/app/demo/view/products/:productId`} exact render={(props) => <ProductDetailView {...props} />} />
+						<Route path={`/app/demo/edit/products/:productId`} exact render={(props) => <ProductChangeLogForm {...props} />} />
+						<Route path={`/app/demo/view/productChangeLog`} exact render={(props) => <ProductChangeLogListView {...props} />} />
 						<Route path={`/app/demo/shop/categories/:categoryId`} exact>
 							<h5>Shop category</h5>
 						</Route>
