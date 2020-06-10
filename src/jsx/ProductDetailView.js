@@ -17,7 +17,6 @@ export class ProductDetailView extends React.Component {
 
 	componentDidMount() {
 		const { productId } = this.props.match.params
-		console.log("/api/products/" + productId);
 		fetch("/api/products/" + productId)
 			.then(res => res.json())
 			.then(
@@ -44,8 +43,12 @@ export class ProductDetailView extends React.Component {
 					<li className="list-group-item">Description: {this.state.product.productDescription}</li>
 					<li className="list-group-item">Unit: {this.state.product.unitType}</li>
 					<li className="list-group-item">Unit Cost: {this.state.product.unitCost}</li>
-					<li className="list-group-item">Image : <img src={this.state.product.productImageURL} alt={this.state.product.productImageURL} className="img-thumbnail" /></li>
-				</ul></div>);
+				</ul>
+				<br />
+				<span><img style={{"height":200,"width":200}} src={this.state.product.productImageURL} alt={this.state.product.productImageURL} className="img-thumbnail" /></span>
+				<br/><br/>
+				<Link className="btn btn-outline-primary" role="button" to={`/app/demo/edit/products/${this.state.product.productId}`} >edit</Link>
+			</div>);
 		}
 		return (
 			<div className="spinner-border" role="status">

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Product implements Serializable {
+	private static final long serialVersionUID = 3924016404217086477L;
+
 	@Id
 	@Column(nullable = false, length = 256)
 	private String productId;

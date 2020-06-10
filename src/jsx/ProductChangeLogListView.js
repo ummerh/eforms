@@ -12,23 +12,44 @@ export class ProductChangeLogListView extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { isLoaded: false, products: [] };
+		this.state = { status: "", isLoaded: false, products: [] };
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.saveLog = this.saveLog.bind(this);
 	}
 
-	handleInputChange(event) {
-		const target = event.target;
-		const value = target.name === 'isGoing' ? target.checked : target.value;
-		const name = target.id;
-		/*let newProd = this.state.product;
-		newProd[name] = value;
-		this.setState({
-			product: newProd
-		});*/
+	handleInputChange(idx, col, event) {
+		var log = this.state.products;
+		log[idx][col] = event.target.value;
+		this.setState({ products: log, status: "Unsaved changes." });
+	}
+	saveLog(idx) {
+		var log = this.state.products;
+		var itm = log[idx];
+		fetch("/api/productChangeLog/" + itm.productChangeLogId, {
+			method: 'PUT', body: JSON.stringify(itm), headers: {
+				'Content-Type': 'application/json'
+			},
+		})
+			.then(res => res.json())
+			.then(
+				(result) => {
+					this.setState({
+						isLoaded: true,
+						status: "Saved successfully."
+					});
+				},
+				(error) => {
+					this.setState({
+						isLoaded: true,
+						status: "Save failed.",
+						error
+					});
+				}
+			)
 	}
 
 	componentDidMount() {
-		fetch("/api/productChangeLog")
+		fetch("/api/productChangeLog/changeStatus/Initiated")
 			.then(res => res.json())
 			.then(
 				(result) => {
@@ -48,52 +69,58 @@ export class ProductChangeLogListView extends React.Component {
 	render() {
 		if (this.state.isLoaded) {
 			var handleInputChange = this.handleInputChange;
-			var userList = this.state.products.map(function(product) {
+			var saveLog = this.saveLog;
+			var userList = this.state.products.map(function(product, idx) {
 				return (<tr key={product.productChangeLogId}>
 					<td scope="row">{product.productName}</td>
 					<td>{product.productDescription}</td>
 					<td>{product.unitCost}</td>
 					<td>{product.unitType}</td>
+					<td><img style={{ "height": 60, "width": 60 }} src={product.productImageURL} alt={product.productImageURL} className="img-thumbnail" /></td>
 					<td>{product.changeStatus}</td>
 					<td><div className="form-group">
-						<textarea className="form-control" id="approverComment" rows="2" value={product.approverComment} onChange={handleInputChange}></textarea>
+						<textarea className="form-control" id={'approverComment' + idx} rows="2" value={product.approverComment == null ? "" : product.approverComment} onChange={handleInputChange.bind(null, idx, 'approverComment')} />
 					</div></td>
 					<td>
 						<div className="form-check">
-							<input className="form-check-input" type="radio" name="approved" id="approved" value="true" />
-							<label className="form-check-label" htmlFor="approved">
+							<input className="form-check-input" type="radio" name="approved" id={'approve' + idx} value="Approved" onChange={handleInputChange.bind(null, idx, 'changeStatus')} />
+							<label className="form-check-label" htmlFor={'approve' + idx}>
 								yes
   							</label>
 						</div>
 						<div className="form-check">
-							<input className="form-check-input" type="radio" name="approved" id="approved" value="false" />
-							<label className="form-check-label" htmlFor="approved">
+							<input className="form-check-input" type="radio" name="approved" id={'disapprove' + idx} value="Disapproved" onChange={handleInputChange.bind(null, idx, 'changeStatus')} />
+							<label className="form-check-label" htmlFor={'disapprove' + idx}>
 								no
   							</label>
 						</div>
 					</td>
-					<td><button type="button" className="btn btn-sm btn-primary">apply</button></td>
+					<td><button type="button" className="btn btn-sm btn-primary" onClick={saveLog.bind(null, idx)} >apply</button></td>
 				</tr>);
 			}
 			);
 			return (
-				<table className="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th scope="col">Name</th>
-							<th scope="col">Description</th>
-							<th scope="col">Unit Cost ($)</th>
-							<th scope="col">Unit Type</th>
-							<th scope="col">Status</th>
-							<th scope="col">Comment</th>
-							<th scope="col">Approve?</th>
-							<th scope="col">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{userList}
-					</tbody>
-				</table>
+				<div>
+					<mark>{this.state.status}</mark>
+					<table className="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Description</th>
+								<th scope="col">Unit Cost ($)</th>
+								<th scope="col">Unit Type</th>
+								<th scope="col">Image</th>
+								<th scope="col">Status</th>
+								<th scope="col">Comment</th>
+								<th scope="col">Approve?</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{userList}
+						</tbody>
+					</table>
+				</div>
 			)
 		}
 		return (

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Category implements Serializable {
+	private static final long serialVersionUID = -959089980548686254L;
 	@Id
 	@Column(nullable = false, length = 256)
 	private String categoryId;

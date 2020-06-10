@@ -12,7 +12,7 @@ export class ProductChangeLogForm extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { isLoaded: false, product: {}, changeLog: {} };
+		this.state = { status: "", isLoaded: false, product: {}, changeLog: {} };
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.submitChange = this.submitChange.bind(this);
 	}
@@ -24,11 +24,10 @@ export class ProductChangeLogForm extends React.Component {
 		let newProd = this.state.product;
 		newProd[name] = value;
 		this.setState({
-			product: newProd
+			product: newProd, status: "Unsaved changes."
 		});
 	}
 	submitChange(event) {
-		console.log(this.state.product);
 		fetch("/api/productChangeLog/init", {
 			method: 'POST', body: JSON.stringify(this.state.product), headers: {
 				'Content-Type': 'application/json'
@@ -39,12 +38,14 @@ export class ProductChangeLogForm extends React.Component {
 				(result) => {
 					this.setState({
 						isLoaded: true,
+						status: "Saved successfully.",
 						product: result
 					});
 				},
 				(error) => {
 					this.setState({
 						isLoaded: true,
+						status: "Save failed.",
 						error
 					});
 				}
@@ -74,6 +75,7 @@ export class ProductChangeLogForm extends React.Component {
 		if (this.state.isLoaded) {
 			return (<div className="col-lg-6">
 				<h4>Product Change Request</h4>
+				<mark>{this.state.status}</mark>
 				<form>
 					<div className="form-group">
 						<label htmlFor="productName">Product Name</label>
@@ -94,9 +96,10 @@ export class ProductChangeLogForm extends React.Component {
 					<div className="form-group">
 						<label htmlFor="productImageURL">Product Image URL</label>
 						<input type="text" className="form-control" id="productImageURL" placeholder="https://" value={this.state.product.productImageURL} onChange={this.handleInputChange} />
+						<img style={{"height":200,"width":200}} src={this.state.product.productImageURL} alt={this.state.product.productImageURL} className="img-thumbnail" />
 					</div>
 				</form>
-				<button type="button" className="btn btn-primary" onClick={this.submitChange}>Submit</button>
+				<button type="button" className="btn btn-primary" onClick={this.submitChange} disabled={this.state.status != 'Unsaved changes.'}>Submit</button>
 			</div>);
 		}
 		return (

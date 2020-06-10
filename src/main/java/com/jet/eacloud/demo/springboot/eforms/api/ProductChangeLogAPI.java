@@ -25,6 +25,11 @@ public class ProductChangeLogAPI {
 		return productLogRepository.findAll(Sort.by("productName"));
 	}
 
+	@RequestMapping("/api/productChangeLog/changeStatus/{status}")
+	public Iterable<ProductChangeLog> getAll(@PathVariable String status) {
+		return productLogRepository.findByChangeStatusOrderByProductName(status);
+	}
+
 	@RequestMapping("/api/productChangeLog/{id}")
 	public ProductChangeLog getById(@PathVariable String id) {
 		return productLogRepository.findById(id).get();

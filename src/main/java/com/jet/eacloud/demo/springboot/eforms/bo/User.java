@@ -1,11 +1,15 @@
 package com.jet.eacloud.demo.springboot.eforms.bo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class User implements Serializable {
+	private static final long serialVersionUID = 6354606795149153610L;
+
 	@Id
 	@Column(nullable = false, length = 256)
 	private String userId;

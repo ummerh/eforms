@@ -37029,6 +37029,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductChangeLogForm).call(this, props));
     _this.state = {
+      status: "",
       isLoaded: false,
       product: {},
       changeLog: {}
@@ -37047,7 +37048,8 @@ function (_React$Component) {
       var newProd = this.state.product;
       newProd[name] = value;
       this.setState({
-        product: newProd
+        product: newProd,
+        status: "Unsaved changes."
       });
     }
   }, {
@@ -37055,7 +37057,6 @@ function (_React$Component) {
     value: function submitChange(event) {
       var _this2 = this;
 
-      console.log(this.state.product);
       fetch("/api/productChangeLog/init", {
         method: 'POST',
         body: JSON.stringify(this.state.product),
@@ -37067,11 +37068,13 @@ function (_React$Component) {
       }).then(function (result) {
         _this2.setState({
           isLoaded: true,
+          status: "Saved successfully.",
           product: result
         });
       }, function (error) {
         _this2.setState({
           isLoaded: true,
+          status: "Save failed.",
           error: error
         });
       });
@@ -37107,6 +37110,8 @@ function (_React$Component) {
           },
           /*#__PURE__*/
           React.createElement("h4", null, "Product Change Request"),
+          /*#__PURE__*/
+          React.createElement("mark", null, this.state.status),
           /*#__PURE__*/
           React.createElement("form", null,
           /*#__PURE__*/
@@ -37192,12 +37197,23 @@ function (_React$Component) {
             placeholder: "https://",
             value: this.state.product.productImageURL,
             onChange: this.handleInputChange
+          }),
+          /*#__PURE__*/
+          React.createElement("img", {
+            style: {
+              "height": 200,
+              "width": 200
+            },
+            src: this.state.product.productImageURL,
+            alt: this.state.product.productImageURL,
+            className: "img-thumbnail"
           }))),
           /*#__PURE__*/
           React.createElement("button", {
             type: "button",
             className: "btn btn-primary",
-            onClick: this.submitChange
+            onClick: this.submitChange,
+            disabled: this.state.status != 'Unsaved changes.'
           }, "Submit"))
         );
       }
@@ -37267,39 +37283,67 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductChangeLogListView).call(this, props));
     _this.state = {
+      status: "",
       isLoaded: false,
       products: []
     };
     _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    _this.saveLog = _this.saveLog.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductChangeLogListView, [{
     key: "handleInputChange",
-    value: function handleInputChange(event) {
-      var target = event.target;
-      var value = target.name === 'isGoing' ? target.checked : target.value;
-      var name = target.id;
-      /*let newProd = this.state.product;
-      newProd[name] = value;
+    value: function handleInputChange(idx, col, event) {
+      var log = this.state.products;
+      log[idx][col] = event.target.value;
       this.setState({
-      	product: newProd
-      });*/
+        products: log,
+        status: "Unsaved changes."
+      });
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "saveLog",
+    value: function saveLog(idx) {
       var _this2 = this;
 
-      fetch("/api/productChangeLog").then(function (res) {
+      var log = this.state.products;
+      var itm = log[idx];
+      fetch("/api/productChangeLog/" + itm.productChangeLogId, {
+        method: 'PUT',
+        body: JSON.stringify(itm),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (res) {
         return res.json();
       }).then(function (result) {
         _this2.setState({
           isLoaded: true,
-          products: result
+          status: "Saved successfully."
         });
       }, function (error) {
         _this2.setState({
+          isLoaded: true,
+          status: "Save failed.",
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      fetch("/api/productChangeLog/changeStatus/Initiated").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this3.setState({
+          isLoaded: true,
+          products: result
+        });
+      }, function (error) {
+        _this3.setState({
           isLoaded: true,
           error: error
         });
@@ -37310,7 +37354,8 @@ function (_React$Component) {
     value: function render() {
       if (this.state.isLoaded) {
         var handleInputChange = this.handleInputChange;
-        var userList = this.state.products.map(function (product) {
+        var saveLog = this.saveLog;
+        var userList = this.state.products.map(function (product, idx) {
           return (
             /*#__PURE__*/
             React.createElement("tr", {
@@ -37327,6 +37372,18 @@ function (_React$Component) {
             /*#__PURE__*/
             React.createElement("td", null, product.unitType),
             /*#__PURE__*/
+            React.createElement("td", null,
+            /*#__PURE__*/
+            React.createElement("img", {
+              style: {
+                "height": 60,
+                "width": 60
+              },
+              src: product.productImageURL,
+              alt: product.productImageURL,
+              className: "img-thumbnail"
+            })),
+            /*#__PURE__*/
             React.createElement("td", null, product.changeStatus),
             /*#__PURE__*/
             React.createElement("td", null,
@@ -37337,10 +37394,10 @@ function (_React$Component) {
             /*#__PURE__*/
             React.createElement("textarea", {
               className: "form-control",
-              id: "approverComment",
+              id: 'approverComment' + idx,
               rows: "2",
-              value: product.approverComment,
-              onChange: handleInputChange
+              value: product.approverComment == null ? "" : product.approverComment,
+              onChange: handleInputChange.bind(null, idx, 'approverComment')
             }))),
             /*#__PURE__*/
             React.createElement("td", null,
@@ -37353,13 +37410,14 @@ function (_React$Component) {
               className: "form-check-input",
               type: "radio",
               name: "approved",
-              id: "approved",
-              value: "true"
+              id: 'approve' + idx,
+              value: "Approved",
+              onChange: handleInputChange.bind(null, idx, 'changeStatus')
             }),
             /*#__PURE__*/
             React.createElement("label", {
               className: "form-check-label",
-              htmlFor: "approved"
+              htmlFor: 'approve' + idx
             }, "yes")),
             /*#__PURE__*/
             React.createElement("div", {
@@ -37370,24 +37428,30 @@ function (_React$Component) {
               className: "form-check-input",
               type: "radio",
               name: "approved",
-              id: "approved",
-              value: "false"
+              id: 'disapprove' + idx,
+              value: "Disapproved",
+              onChange: handleInputChange.bind(null, idx, 'changeStatus')
             }),
             /*#__PURE__*/
             React.createElement("label", {
               className: "form-check-label",
-              htmlFor: "approved"
+              htmlFor: 'disapprove' + idx
             }, "no"))),
             /*#__PURE__*/
             React.createElement("td", null,
             /*#__PURE__*/
             React.createElement("button", {
               type: "button",
-              className: "btn btn-sm btn-primary"
+              className: "btn btn-sm btn-primary",
+              onClick: saveLog.bind(null, idx)
             }, "apply")))
           );
         });
         return (
+          /*#__PURE__*/
+          React.createElement("div", null,
+          /*#__PURE__*/
+          React.createElement("mark", null, this.state.status),
           /*#__PURE__*/
           React.createElement("table", {
             className: "table table-striped table-hover"
@@ -37415,6 +37479,10 @@ function (_React$Component) {
           /*#__PURE__*/
           React.createElement("th", {
             scope: "col"
+          }, "Image"),
+          /*#__PURE__*/
+          React.createElement("th", {
+            scope: "col"
           }, "Status"),
           /*#__PURE__*/
           React.createElement("th", {
@@ -37429,7 +37497,7 @@ function (_React$Component) {
             scope: "col"
           }, "Action"))),
           /*#__PURE__*/
-          React.createElement("tbody", null, userList))
+          React.createElement("tbody", null, userList)))
         );
       }
 
@@ -37510,7 +37578,6 @@ function (_React$Component) {
       var _this2 = this;
 
       var productId = this.props.match.params.productId;
-      console.log("/api/products/" + productId);
       fetch("/api/products/" + productId).then(function (res) {
         return res.json();
       }).then(function (result) {
@@ -37555,17 +37622,31 @@ function (_React$Component) {
           /*#__PURE__*/
           React.createElement("li", {
             className: "list-group-item"
-          }, "Unit Cost: ", this.state.product.unitCost),
+          }, "Unit Cost: ", this.state.product.unitCost)),
           /*#__PURE__*/
-          React.createElement("li", {
-            className: "list-group-item"
-          }, "Image : ",
+          React.createElement("br", null),
+          /*#__PURE__*/
+          React.createElement("span", null,
           /*#__PURE__*/
           React.createElement("img", {
+            style: {
+              "height": 200,
+              "width": 200
+            },
             src: this.state.product.productImageURL,
             alt: this.state.product.productImageURL,
             className: "img-thumbnail"
-          }))))
+          })),
+          /*#__PURE__*/
+          React.createElement("br", null),
+          /*#__PURE__*/
+          React.createElement("br", null),
+          /*#__PURE__*/
+          React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+            className: "btn btn-outline-primary",
+            role: "button",
+            to: "/app/demo/edit/products/".concat(this.state.product.productId)
+          }, "edit"))
         );
       }
 

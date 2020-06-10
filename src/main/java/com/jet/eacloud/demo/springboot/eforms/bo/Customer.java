@@ -10,6 +10,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Customer implements Serializable {
+	private static final long serialVersionUID = -4331081267894549849L;
+
 	@Id
 	@Column(nullable = false, length = 256)
 	private String customerId;

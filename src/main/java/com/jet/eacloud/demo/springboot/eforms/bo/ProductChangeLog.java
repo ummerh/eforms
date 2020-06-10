@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ProductChangeLog implements Serializable {
 
+	private static final long serialVersionUID = -1809701901347048756L;
+
 	public ProductChangeLog() {
 	}
 
