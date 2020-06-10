@@ -73,7 +73,7 @@ export class ProductChangeLogListView extends React.Component {
 			var userList = this.state.products.map(function(product, idx) {
 				return (<tr key={product.productChangeLogId}>
 					<td scope="row">{product.productName}</td>
-					<td>{product.productDescription}</td>
+					<td className="w-25">{product.productDescription}</td>
 					<td>{product.unitCost}</td>
 					<td>{product.unitType}</td>
 					<td><img style={{ "height": 60, "width": 60 }} src={product.productImageURL} alt={product.productImageURL} className="img-thumbnail" /></td>

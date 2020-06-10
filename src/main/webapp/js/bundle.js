@@ -37366,7 +37366,9 @@ function (_React$Component) {
               scope: "row"
             }, product.productName),
             /*#__PURE__*/
-            React.createElement("td", null, product.productDescription),
+            React.createElement("td", {
+              className: "w-25"
+            }, product.productDescription),
             /*#__PURE__*/
             React.createElement("td", null, product.unitCost),
             /*#__PURE__*/
@@ -37761,7 +37763,9 @@ function (_React$Component) {
               scope: "row"
             }, product.productName),
             /*#__PURE__*/
-            React.createElement("td", null, product.productDescription),
+            React.createElement("td", {
+              className: "w-25"
+            }, product.productDescription),
             /*#__PURE__*/
             React.createElement("td", null, product.unitCost),
             /*#__PURE__*/

@@ -52,16 +52,18 @@ public class ProductChangeLogAPI {
 		if (old != null) {
 			rec.setProductChangeLogId(id);
 			productLogRepository.save(rec);
-			Product product = productRepository.findById(old.getProductId()).get();
-			if (product != null) {
-				product.setLastUpdated(new Timestamp(System.currentTimeMillis()));
-				product.setProductName(rec.getProductName());
-				product.setProductDescription(rec.getProductDescription());
-				product.setUnitType(rec.getUnitType());
-				product.setUnitCost(rec.getUnitCost());
-				product.setProductImageURL(rec.getProductImageURL());
-				product.setProductChangeLogId(rec.getProductChangeLogId());
-				productRepository.save(product);
+			if ("Approved".equals(rec.getChangeStatus())) {
+				Product product = productRepository.findById(old.getProductId()).get();
+				if (product != null) {
+					product.setLastUpdated(new Timestamp(System.currentTimeMillis()));
+					product.setProductName(rec.getProductName());
+					product.setProductDescription(rec.getProductDescription());
+					product.setUnitType(rec.getUnitType());
+					product.setUnitCost(rec.getUnitCost());
+					product.setProductImageURL(rec.getProductImageURL());
+					product.setProductChangeLogId(rec.getProductChangeLogId());
+					productRepository.save(product);
+				}
 			}
 		}
 		return rec;
