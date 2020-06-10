@@ -1,5 +1,6 @@
 package com.jet.eacloud.demo.springboot.eforms.api;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jet.eacloud.demo.springboot.eforms.bo.Product;
 import com.jet.eacloud.demo.springboot.eforms.bo.ProductChangeLog;
 import com.jet.eacloud.demo.springboot.eforms.repo.ProductChangeLogRepository;
+import com.jet.eacloud.demo.springboot.eforms.repo.ProductRepository;
 
 @RestController
 public class ProductChangeLogAPI {
 
 	@Autowired
 	ProductChangeLogRepository productLogRepository;
+
+	@Autowired
+	ProductRepository productRepository;
 
 	@RequestMapping("/api/productChangeLog")
 	public Iterable<ProductChangeLog> getAll() {
@@ -47,6 +52,17 @@ public class ProductChangeLogAPI {
 		if (old != null) {
 			rec.setProductChangeLogId(id);
 			productLogRepository.save(rec);
+			Product product = productRepository.findById(old.getProductId()).get();
+			if (product != null) {
+				product.setLastUpdated(new Timestamp(System.currentTimeMillis()));
+				product.setProductName(rec.getProductName());
+				product.setProductDescription(rec.getProductDescription());
+				product.setUnitType(rec.getUnitType());
+				product.setUnitCost(rec.getUnitCost());
+				product.setProductImageURL(rec.getProductImageURL());
+				product.setProductChangeLogId(rec.getProductChangeLogId());
+				productRepository.save(product);
+			}
 		}
 		return rec;
 	}

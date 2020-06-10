@@ -36,7 +36,8 @@ public class Product implements Serializable {
 
 	private Timestamp lastUpdated;
 
-	private Integer productChangeLogId;
+	@Column(nullable = true, length = 256)
+	private String productChangeLogId;
 
 	@ManyToOne
 	@JoinColumn(name = "categoryId", insertable = false, updatable = false)
@@ -122,11 +123,11 @@ public class Product implements Serializable {
 		this.unitCost = unitCost;
 	}
 
-	public Integer getProductChangeLogId() {
+	public String getProductChangeLogId() {
 		return productChangeLogId;
 	}
 
-	public void setProductChangeLogId(Integer productChangeLogId) {
+	public void setProductChangeLogId(String productChangeLogId) {
 		this.productChangeLogId = productChangeLogId;
 	}
 
