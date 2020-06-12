@@ -8,11 +8,11 @@ const ProductDetailView = require("./ProductDetailView.js").ProductDetailView;
 const CategoryGridView = require("./CategoryGridView.js").CategoryGridView;
 const ProductChangeLogForm = require("./ProductChangeLogForm.js").ProductChangeLogForm;
 const ProductChangeLogListView = require("./ProductChangeLogListView.js").ProductChangeLogListView;
+const Navigation = require("./Navigation.js").Navigation;
 
 import {
 	HashRouter as Router,
 	Switch,
-	Link,
 	Route
 } from "react-router-dom";
 
@@ -21,32 +21,7 @@ export class Home extends React.Component {
 		return (
 			<Router>
 				<div>
-					<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-						<a className="navbar-brand" href="/">E-Forms</a>
-						<button className="navbar-toggler" type="button" data-toggle="collapse"
-							data-target="#navbarSupportedContent"
-							aria-controls="navbarSupportedContent" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span className="navbar-toggler-icon"></span>
-						</button>
-
-						<div className="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul className="navbar-nav mr-auto">
-								<li className="nav-item"><Link className="nav-link" to="/app/demo">Demo App</Link></li>
-								<li className="nav-item dropdown"><a
-									className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-									role="button" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"> Session </a>
-									<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-										<Link className="dropdown-item" to="/app/session/status">Status</Link>
-										<div className="dropdown-divider"></div>
-										<Link className="dropdown-item" to="/app/session/end">End</Link>
-									</div></li>
-								<li className="nav-item"><a className="nav-link disabled" href="#"
-									aria-disabled="true">API</a></li>
-							</ul>
-						</div>
-					</nav>
+					<Navigation path="." />
 					<Switch>
 						<Route path="/" exact>
 							<HomeWindow />

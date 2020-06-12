@@ -36439,6 +36439,8 @@ var ProductChangeLogForm = __webpack_require__(/*! ./ProductChangeLogForm.js */ 
 
 var ProductChangeLogListView = __webpack_require__(/*! ./ProductChangeLogListView.js */ "./src/jsx/ProductChangeLogListView.js").ProductChangeLogListView;
 
+var Navigation = __webpack_require__(/*! ./Navigation.js */ "./src/jsx/Navigation.js").Navigation;
+
 
 var Home =
 /*#__PURE__*/
@@ -36460,89 +36462,9 @@ function (_React$Component) {
         /*#__PURE__*/
         React.createElement("div", null,
         /*#__PURE__*/
-        React.createElement("nav", {
-          className: "navbar navbar-expand-lg navbar-dark bg-dark"
-        },
-        /*#__PURE__*/
-        React.createElement("a", {
-          className: "navbar-brand",
-          href: "/"
-        }, "E-Forms"),
-        /*#__PURE__*/
-        React.createElement("button", {
-          className: "navbar-toggler",
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        },
-        /*#__PURE__*/
-        React.createElement("span", {
-          className: "navbar-toggler-icon"
-        })),
-        /*#__PURE__*/
-        React.createElement("div", {
-          className: "collapse navbar-collapse",
-          id: "navbarSupportedContent"
-        },
-        /*#__PURE__*/
-        React.createElement("ul", {
-          className: "navbar-nav mr-auto"
-        },
-        /*#__PURE__*/
-        React.createElement("li", {
-          className: "nav-item"
-        },
-        /*#__PURE__*/
-        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-          className: "nav-link",
-          to: "/app/demo"
-        }, "Demo App")),
-        /*#__PURE__*/
-        React.createElement("li", {
-          className: "nav-item dropdown"
-        },
-        /*#__PURE__*/
-        React.createElement("a", {
-          className: "nav-link dropdown-toggle",
-          href: "#",
-          id: "navbarDropdown",
-          role: "button",
-          "data-toggle": "dropdown",
-          "aria-haspopup": "true",
-          "aria-expanded": "false"
-        }, " Session "),
-        /*#__PURE__*/
-        React.createElement("div", {
-          className: "dropdown-menu",
-          "aria-labelledby": "navbarDropdown"
-        },
-        /*#__PURE__*/
-        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-          className: "dropdown-item",
-          to: "/app/session/status"
-        }, "Status"),
-        /*#__PURE__*/
-        React.createElement("div", {
-          className: "dropdown-divider"
+        React.createElement(Navigation, {
+          path: "."
         }),
-        /*#__PURE__*/
-        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
-          className: "dropdown-item",
-          to: "/app/session/end"
-        }, "End"))),
-        /*#__PURE__*/
-        React.createElement("li", {
-          className: "nav-item"
-        },
-        /*#__PURE__*/
-        React.createElement("a", {
-          className: "nav-link disabled",
-          href: "#",
-          "aria-disabled": "true"
-        }, "API"))))),
         /*#__PURE__*/
         React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null,
         /*#__PURE__*/
@@ -36979,6 +36901,364 @@ function (_React$Component2) {
   }]);
 
   return Overview;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/Kiosk.js":
+/*!**************************!*\
+  !*** ./src/jsx/Kiosk.js ***!
+  \**************************/
+/*! exports provided: Kiosk */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kiosk", function() { return Kiosk; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var Navigation = __webpack_require__(/*! ./Navigation.js */ "./src/jsx/Navigation.js").Navigation;
+
+var KioskHome = __webpack_require__(/*! ./KioskHome.js */ "./src/jsx/KioskHome.js").KioskHome;
+
+
+var Kiosk =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Kiosk, _React$Component);
+
+  function Kiosk() {
+    _classCallCheck(this, Kiosk);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Kiosk).apply(this, arguments));
+  }
+
+  _createClass(Kiosk, [{
+    key: "render",
+    value: function render() {
+      return (
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["HashRouter"], null,
+        /*#__PURE__*/
+        React.createElement("div", null,
+        /*#__PURE__*/
+        React.createElement(Navigation, {
+          path: ".."
+        }),
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null,
+        /*#__PURE__*/
+        React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+          path: "/",
+          exact: true,
+          render: function render(props) {
+            return (
+              /*#__PURE__*/
+              React.createElement(KioskHome, props)
+            );
+          }
+        }))))
+      );
+    }
+  }]);
+
+  return Kiosk;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/KioskHome.js":
+/*!******************************!*\
+  !*** ./src/jsx/KioskHome.js ***!
+  \******************************/
+/*! exports provided: KioskHome */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KioskHome", function() { return KioskHome; });
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var KioskHome =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(KioskHome, _React$Component);
+
+  function KioskHome(props) {
+    var _this;
+
+    _classCallCheck(this, KioskHome);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(KioskHome).call(this, props));
+    _this.state = {
+      currTab: ""
+    };
+    return _this;
+  }
+
+  _createClass(KioskHome, [{
+    key: "render",
+    value: function render() {
+      return (
+        /*#__PURE__*/
+        React.createElement("div", null,
+        /*#__PURE__*/
+        React.createElement("main", {
+          role: "main"
+        },
+        /*#__PURE__*/
+        React.createElement("section", {
+          className: "jumbotron text-center"
+        },
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "container"
+        },
+        /*#__PURE__*/
+        React.createElement("h1", null, "Cloud Kiosk - Self Provisioning Cloud Compute"),
+        /*#__PURE__*/
+        React.createElement("p", {
+          className: "lead"
+        }, "Cloud adoption can present itself as a steep learning curve, and the best way to reduce the friction is to allow simple and secure access to cloud resources for experimentation. Agile teams should be able to self-provision resources and explore features easily, that should enable faster adoption of these new platforms within development teams."))),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "container"
+        },
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "row"
+        },
+        /*#__PURE__*/
+        React.createElement("div", null,
+        /*#__PURE__*/
+        React.createElement("h2", null, "Guiding Principles"),
+        /*#__PURE__*/
+        React.createElement("ul", null,
+        /*#__PURE__*/
+        React.createElement("li", null, "Simple steps to request cloud resources, adhering to established policies. \u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "A single Azure resource group should map to a team request with an end date. "),
+        /*#__PURE__*/
+        React.createElement("li", null, "Azure operator roles with default members assigned at the subscription level. "),
+        /*#__PURE__*/
+        React.createElement("li", null, "Azure team roles with default permissions assignable at the resource group level.\u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "IAM team can assign team level operators at resource group levels. \u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Governance implemented using Azure Policies and RBAC.\u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Budget limits built into the templated solution. \u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Whitelist the services using Azure policies.\u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Use Tag policies.\u200B"),
+        /*#__PURE__*/
+        React.createElement("li", null, "Automate.")))))),
+        /*#__PURE__*/
+        React.createElement("footer", {
+          className: "container"
+        },
+        /*#__PURE__*/
+        React.createElement("p", null, "Jackson Enterprise Architecture 2019-2020")))
+      );
+    }
+  }]);
+
+  return KioskHome;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/Navigation.js":
+/*!*******************************!*\
+  !*** ./src/jsx/Navigation.js ***!
+  \*******************************/
+/*! exports provided: Navigation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Navigation", function() { return Navigation; });
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var Navigation =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Navigation, _React$Component);
+
+  function Navigation(props) {
+    var _this;
+
+    _classCallCheck(this, Navigation);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Navigation).call(this, props));
+    _this.state = {
+      currTab: ""
+    };
+    return _this;
+  }
+
+  _createClass(Navigation, [{
+    key: "render",
+    value: function render() {
+      return (
+        /*#__PURE__*/
+        React.createElement("nav", {
+          className: "navbar navbar-expand-lg navbar-dark bg-dark"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "navbar-brand",
+          href: "/"
+        }, "E-Forms"),
+        /*#__PURE__*/
+        React.createElement("button", {
+          className: "navbar-toggler",
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        },
+        /*#__PURE__*/
+        React.createElement("span", {
+          className: "navbar-toggler-icon"
+        })),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "collapse navbar-collapse",
+          id: "navbarSupportedContent"
+        },
+        /*#__PURE__*/
+        React.createElement("ul", {
+          className: "navbar-nav mr-auto"
+        },
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "nav-link",
+          href: this.props.path + "/#/app/demo"
+        }, "Demo App")),
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "nav-link",
+          href: "/kiosk/"
+        }, "Cloud Kiosk")),
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item dropdown"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "nav-link dropdown-toggle",
+          href: "#",
+          id: "navbarDropdown",
+          role: "button",
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }, " Session "),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "dropdown-menu",
+          "aria-labelledby": "navbarDropdown"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "dropdown-item",
+          href: this.props.path + "/#/app/session/status"
+        }, "Status"),
+        /*#__PURE__*/
+        React.createElement("div", {
+          className: "dropdown-divider"
+        }),
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "dropdown-item",
+          href: this.props.path + "/#/app/session/end"
+        }, "End"))),
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item"
+        },
+        /*#__PURE__*/
+        React.createElement("a", {
+          className: "nav-link disabled",
+          href: "#",
+          "aria-disabled": "true"
+        }, "API")))))
+      );
+    }
+  }]);
+
+  return Navigation;
 }(React.Component);
 
 /***/ }),
@@ -38159,9 +38439,19 @@ var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/in
 
 var Home = __webpack_require__(/*! ./Home.js */ "./src/jsx/Home.js").Home;
 
-ReactDOM.render(
-/*#__PURE__*/
-React.createElement(Home, null), document.getElementById("homeContent"));
+var Kiosk = __webpack_require__(/*! ./Kiosk.js */ "./src/jsx/Kiosk.js").Kiosk;
+
+if (document.getElementById("homeContent")) {
+  ReactDOM.render(
+  /*#__PURE__*/
+  React.createElement(Home, null), document.getElementById("homeContent"));
+}
+
+if (document.getElementById("kioskContent")) {
+  ReactDOM.render(
+  /*#__PURE__*/
+  React.createElement(Kiosk, null), document.getElementById("kioskContent"));
+}
 
 /***/ })
 
