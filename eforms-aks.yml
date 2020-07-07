@@ -25,23 +25,32 @@ spec:
         image: eacloudacr.azurecr.io/eacloud/eforms:0.0.2
         ports:
         - containerPort: 8080
----
+---        
   apiVersion: extensions/v1beta1
-    kind: Ingress
-      metadata:
-                  annotations:
-                                kubernetes.io/ingress.class: nginx
-                                    name: eforms-ingress    
-                                      spec:
-                                                  rules:
-                                                                - host: eforms.eastus2.cloudapp.azure.com
-                                                                          http:
-                                                                                            paths:
-                                                                                                                - backend:
-                                                                                                                                        serviceName: eforms
-                                                                                                                                                        servicePort: 8080
-                                                                                                                                                                      path: /
-                                                                                                                                                                          tls:
-                                                                                                                                                                                          - hosts:
-                                                                                                                                                                                                              - eforms.eastus2.cloudapp.azure.com
-                                                                                                                                                                                                                          secretName: aks-ingress-tls
+  kind: Ingress
+  metadata:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: eforms-ingress    
+  spec:
+    rules:
+      - host: eforms.eastus2.cloudapp.azure.com
+        http:
+          paths:
+            - backend:
+                serviceName: eforms
+                servicePort: 8080
+              path: /
+    tls:
+        - hosts:
+            - eforms.eastus2.cloudapp.azure.com
+          secretName: aks-ingress-tls
+---
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: aks-ingress-tls   
+  data:
+    tls.crt: aks-ingress-tls.crt
+    tls.key: aks-ingress-tls.key
+  type: kubernetes.io/tls
