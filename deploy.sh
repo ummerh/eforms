@@ -6,6 +6,7 @@ login_docker(){
 }
 login_aks(){
     az aks get-credentials --resource-group=HK-eforms-infra --name=eacloudAKS
+    az aks update -n eacloudAKS -g HK-eforms-infra --attach-acr eacloudacr
 }
 
 build_app(){
