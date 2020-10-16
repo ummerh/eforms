@@ -1,0 +1,3 @@
+create schema eforms;
+create user 'eformsapp' identified by '123xyz!eforms';
+grant all privileges on eforms.* to 'eformsapp';
