@@ -37210,7 +37210,7 @@ function (_React$Component) {
         React.createElement("a", {
           className: "nav-link",
           href: "/kiosk/"
-        }, "Cloud Kiosk")),
+        }, "Employees")),
         /*#__PURE__*/
         React.createElement("li", {
           className: "nav-item dropdown"
@@ -37253,7 +37253,15 @@ function (_React$Component) {
           className: "nav-link disabled",
           href: "#",
           "aria-disabled": "true"
-        }, "API")))))
+        }, "API"))),
+        /*#__PURE__*/
+        React.createElement("ul", {
+          className: "navbar-nav navbar-right"
+        },
+        /*#__PURE__*/
+        React.createElement("li", {
+          className: "nav-item nav-link"
+        }, givenName ? givenName : ''))))
       );
     }
   }]);

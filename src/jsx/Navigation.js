@@ -19,7 +19,7 @@ export class Navigation extends React.Component {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav mr-auto">
 						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/app/demo"}>Demo App</a></li>
-						<li className="nav-item"><a className="nav-link" href="/kiosk/">Cloud Kiosk</a></li>
+						<li className="nav-item"><a className="nav-link" href="/kiosk/">Employees</a></li>
 						<li className="nav-item dropdown"><a
 							className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -31,6 +31,9 @@ export class Navigation extends React.Component {
 							</div></li>
 						<li className="nav-item"><a className="nav-link disabled" href="#"
 							aria-disabled="true">API</a></li>
+					</ul>
+					<ul className="navbar-nav navbar-right">
+						<li className="nav-item nav-link">{givenName?givenName:''}</li>
 					</ul>
 				</div>
 			</nav>);
