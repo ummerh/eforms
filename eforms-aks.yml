@@ -31,7 +31,7 @@ kind: Service
 metadata:
   name: eforms-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8080
