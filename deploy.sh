@@ -2,11 +2,11 @@
 #!/bin/bash
 
 login_docker(){
-    az acr login --resource-group=HK-eforms-infra --name=eacloudacr
+    az acr login --resource-group=HK-eforms-aks-infra --name=eacloudacr
 }
 login_aks(){
-    az aks get-credentials --resource-group=HK-eforms-infra --name=eacloudAKS
-    az aks update -n eacloudAKS -g HK-eforms-infra --attach-acr eacloudacr
+    az aks get-credentials --resource-group=HK-eforms-aks-infra --name=eacloudAKS
+    az aks update -n eacloudAKS -g HK-eforms-aks-infra --attach-acr eacloudacr
 }
 
 build_app(){
