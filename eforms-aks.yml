@@ -31,29 +31,29 @@ kind: Service
 metadata:
   name: eforms-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 8080
   selector:
    app: eforms        
 ---        
-  apiVersion: extensions/v1beta1
-  kind: Ingress
-  metadata:
-    annotations:
-      kubernetes.io/ingress.class: nginx
-    name: eforms-ingress    
-  spec:
-    rules:
-      - host: eforms.eastus2.cloudapp.azure.com
-        http:
-          paths:
-            - backend:
-                serviceName: eforms-service
-                servicePort: 80
-              path: /
-    tls:
-        - hosts:
-            - eforms.eastus2.cloudapp.azure.com
-          secretName: aks-ingress-tls
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: eforms-ingress    
+spec:
+  rules:
+    - host: eforms.eastus2.cloudapp.azure.com
+      http:
+        paths:
+          - backend:
+              serviceName: eforms-service
+              servicePort: 80
+            path: /
+  tls:
+      - hosts:
+          - eforms.eastus2.cloudapp.azure.com
+        secretName: aks-ingress-tls
