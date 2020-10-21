@@ -1,0 +1,102 @@
+product_id,Active,category_id,product_name,product_description,unit_price,image_url,last_updated,unit_type
+1,1,1,Acer - Aspire U,Acer - Aspire U,1899.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_U.png,10/19/2020,EA
+2,1,1,Acer - Aspire M,Acer - Aspire M,699.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_M.png,10/19/2020,EA
+3,1,1,Acer - Aspire S3,Acer - Aspire S3,628.00,https://diviceimage.azureedge.net/devices/Acer/Aspire_s3.png,10/19/2020,EA
+4,1,1,Acer - Aspire S5,Acer - Aspire S5,1049.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_s5.png,10/19/2020,EA
+5,1,1,Acer - Aspire S7,Acer - Aspire S7,1399.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_s7.png,10/19/2020,EA
+6,1,1,Acer - ICONIA W5,Acer - ICONIA W5,599.99,https://diviceimage.azureedge.net/devices/Acer/Acer_ICONIA_W5.png,10/19/2020,EA
+7,1,1,Acer - ICONIA W7,Acer - ICONIA W7,999.99,https://diviceimage.azureedge.net/devices/Acer/Acer_ICONIA_W7.png,10/19/2020,EA
+8,1,1,Acer - Aspire E,Acer - Aspire E,379.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_E.png,10/19/2020,EA
+9,1,1,Acer - TravelMate B,Acer - TravelMate B,399.99,https://diviceimage.azureedge.net/devices/Acer/TravelMateB.png,10/19/2020,EA
+10,1,1,Acer - Aspire V3,Acer - Aspire V3,499.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_v3.png,10/19/2020,EA
+11,1,1,Acer - Aspire One AO756-4890,Acer - Aspire One AO756-4890,379.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_One_AO756-4890.png,10/19/2020,EA
+12,1,1,Acer - Aspire One AO725-0845 ,Acer - Aspire One AO725-0845 ,329.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_One_AO725-0845.png,10/19/2020,EA
+13,1,1,Acer - Aspire One,Acer - Aspire One,379.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_One.png,10/19/2020,EA
+14,1,1,Acer - Aspire V5,Acer - Aspire V5,749.99,https://diviceimage.azureedge.net/devices/Acer/Aspire_v5.png,10/19/2020,EA
+15,1,2,Asus - K55VD,Asus - K55VD,899.99,https://diviceimage.azureedge.net/devices/Asus/Asus_K55VD.png,10/19/2020,EA
+16,1,2,Asus - G75VW,Asus - G75VW,1699.99,https://diviceimage.azureedge.net/devices/Asus/Asus_G75VW.png,10/19/2020,EA
+17,1,2,Asus - N56VJ,Asus - N56VJ,999.99,https://diviceimage.azureedge.net/devices/Asus/Asus_N56VJ.png,10/19/2020,EA
+18,1,2,Asus - B53S,Asus - B53S,1469.99,https://diviceimage.azureedge.net/devices/Asus/Asus_B53S.png,10/19/2020,EA
+19,1,2,Asus - VivoTab,Asus - VivoTab,799.99,https://diviceimage.azureedge.net/devices/Asus/Asus_VivoTab.png,10/19/2020,EA
+20,1,2,Asus - Transformer Book,Asus - Transformer Book,999.99,https://diviceimage.azureedge.net/devices/Asus/Asus_Transformer_Book.png,10/19/2020,EA
+21,1,2,Asus - ET2411IUTI,Asus - ET2411IUTI,999.00,https://diviceimage.azureedge.net/devices/Asus/Asus_ET2411IUTI.png,10/19/2020,EA
+22,1,2,Asus - VivoBook,Asus - VivoBook,599.99,https://diviceimage.azureedge.net/devices/Asus/Asus_VivoBook.png,10/19/2020,EA
+23,1,2,Asus - Zenbook,Asus - Zenbook,1099.99,https://diviceimage.azureedge.net/devices/Asus/Asus_Zenbook.png,10/19/2020,EA
+24,1,2,Asus - ET2411INTI,Asus - ET2411INTI,1399.99,https://diviceimage.azureedge.net/devices/Asus/Asus_ET2411INTI.png,10/19/2020,EA
+25,1,2,Asus - ET2701INTI,Asus - ET2701INTI,1299.99,https://diviceimage.azureedge.net/devices/Asus/Asus_ET2701INTI.png,10/19/2020,EA
+26,1,2,Asus - ET2300INTI,Asus - ET2300INTI,1199.00,https://diviceimage.azureedge.net/devices/Asus/Asus_ET2300INTI.png,10/19/2020,EA
+27,1,2,Asus - Taichi 21,Asus - Taichi 21,1648.00,https://diviceimage.azureedge.net/devices/Asus/Asus_Taichi_21.png,10/19/2020,EA
+28,1,2,Asus - Eee Slate B121,Asus - Eee Slate B121,1499.00,https://diviceimage.azureedge.net/devices/Asus/Asus_Eee_Slate_B121.png,10/19/2020,EA
+29,1,3,Dell - Inspiron 17,Dell - Inspiron 17,449.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_17.png,10/19/2020,EA
+30,1,3,Dell - XPS 15,Dell - XPS 15,1299.99,https://diviceimage.azureedge.net/devices/Dell/Dell_XPS_15.png,10/19/2020,EA
+31,1,3,Dell - Inspiron 15R,Dell - Inspiron 15R,699.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_15R.png,10/19/2020,EA
+32,1,3,Dell - XPS 13,Dell - XPS 13,999.99,https://diviceimage.azureedge.net/devices/Dell/Dell_XPS_13.png,10/19/2020,EA
+33,1,3,Dell - XPS 14,Dell - XPS 14,999.99,https://diviceimage.azureedge.net/devices/Dell/Dell_XPS_14.png,10/19/2020,EA
+34,1,3,Dell - Inspiron One 20,Dell - Inspiron One 20,499.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_One_20.png,10/19/2020,EA
+35,1,3,Dell - Inspiron One 23,Dell - Inspiron One 23,649.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_One_23.png,10/19/2020,EA
+36,1,3,Dell - XPS One 27,Dell - XPS One 27,1399.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_One_27.png,10/19/2020,EA
+37,1,3,Dell - Alienware M18x,Dell - Alienware M18x,1899.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Alienware_M18x.png,10/19/2020,EA
+38,1,3,Dell - Alienware M14x,Dell - Alienware M14x,999.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Alienware_M14x.png,10/19/2020,EA
+39,1,3,Dell - XPS 10,Dell - XPS 10,499.99,https://diviceimage.azureedge.net/devices/Dell/Dell_XPS_10.png,10/19/2020,EA
+40,1,3,Dell - Inspiron 15z,Dell - Inspiron 15z,399.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_15z.png,10/19/2020,EA
+41,1,3,Dell - Latitude 10,Dell - Latitude 10,579.00,https://diviceimage.azureedge.net/devices/Dell/Dell_Latitude_10.png,10/19/2020,EA
+42,1,3,Dell - Inspiron 14z,Dell - Inspiron 14z,599.99,https://diviceimage.azureedge.net/devices/Dell/Dell_Inspiron_14z.png,10/19/2020,EA
+43,1,4,HP - Pavilion dv6,HP - Pavilion dv6,699.00,https://diviceimage.azureedge.net/devices/HP/HP_dv6.png,10/19/2020,EA
+44,1,4,HP - EliteBook 8570p,HP - EliteBook 8570p,1049.00,https://diviceimage.azureedge.net/devices/HP/HP_EliteBook_8570p.png,10/19/2020,EA
+45,1,4,HP - ProBook 4545s,HP - ProBook 4545s,499.00,https://diviceimage.azureedge.net/devices/HP/HP_ProBook_4545s.png,10/19/2020,EA
+46,1,4,HP - ProBook 4440s,HP - ProBook 4440s,679.00,https://diviceimage.azureedge.net/devices/HP/HP_ProBook_4440s.png,10/19/2020,EA
+47,1,4,HP - Z1,HP - Z1,2679.00,https://diviceimage.azureedge.net/devices/HP/HP_Z1.png,10/19/2020,EA
+48,1,4,HP - Compaq Pro 4300 ,HP - Compaq Pro 4300 ,859.00,https://diviceimage.azureedge.net/devices/HP/HP_CompaqPro_4300.png,10/19/2020,EA
+49,1,4,HP - Spectre XT Pro ,HP - Spectre XT Pro ,1099.00,https://diviceimage.azureedge.net/devices/HP/HP_SpectreXTPro.png,10/19/2020,EA
+50,1,4,HP - ENVY Pro ,HP - ENVY Pro ,849.00,https://diviceimage.azureedge.net/devices/HP/HP_ENVYPro.png,10/19/2020,EA
+51,1,4,HP - HP EliteBook Folio 9470m ,HP - HP EliteBook Folio 9470m ,1349.00,https://diviceimage.azureedge.net/devices/HP/HP_EliteBookFolio_9470m.png,10/19/2020,EA
+52,1,4,HP - TouchSmart 320-1030,HP - TouchSmart 320-1030,899.99,https://diviceimage.azureedge.net/devices/HP/HP_TouchSmart.png,10/19/2020,EA
+53,1,4,HP - HP 2000t,HP - HP 2000t,399.99,https://diviceimage.azureedge.net/devices/HP/HP_2000t.png,10/19/2020,EA
+54,1,4,HP - HP Mini 1104,HP - HP Mini 1104,349.00,https://diviceimage.azureedge.net/devices/HP/HP_1104.png,10/19/2020,EA
+55,1,4,HP - ElitePad 900,HP - ElitePad 900,689.00,https://diviceimage.azureedge.net/devices/HP/HP_ElitePad_900.png,10/19/2020,EA
+56,1,6,Lenovo - ThinkPad X230,Lenovo - ThinkPad X230,769.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_ThinkPad_X230.png,10/19/2020,EA
+57,1,6,Lenovo - IdeaPad Y580,Lenovo - IdeaPad Y580,949.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_Y580.png,10/19/2020,EA
+58,1,6,Lenovo - S300,Lenovo - S300,389.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_S300.png,10/19/2020,EA
+59,1,6,Lenovo - C540,Lenovo - C540,779.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_C540.png,10/19/2020,EA
+60,1,6,Lenovo - B540,Lenovo - B540,879.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_B540.png,10/19/2020,EA
+61,1,6,Lenovo - M92z,Lenovo - M92z,879.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_M92z.png,10/19/2020,EA
+62,1,6,Lenovo - IdeaPad Z Series,Lenovo - IdeaPad Z Series,899.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_Z_Series.png,10/19/2020,EA
+63,1,6,Lenovo - Essential G Series,Lenovo - Essential G Series,699.99,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_G.png,10/19/2020,EA
+64,1,6,Lenovo - Yoga Ideapad,Lenovo - Yoga Ideapad,1259.99,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_Yoga.png,10/19/2020,EA
+65,1,6,Lenovo - G480,Lenovo - G480,699.99,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_G480.png,10/19/2020,EA
+66,1,6,Lenovo - ThinkPad W530,Lenovo - ThinkPad W530,1299.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_W530.png,10/19/2020,EA
+67,1,6,Lenovo - Lynx,Lenovo - Lynx,649.00,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_Lynx.png,10/19/2020,EA
+68,1,6,Lenovo - ThinkPad,Lenovo - ThinkPad,679.99,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_ThinkPad.png,10/19/2020,EA
+69,1,6,Lenovo - Twist Multitouch,Lenovo - Twist Multitouch,829.99,https://diviceimage.azureedge.net/devices/Lenovo/Lenovo_Twist.png,10/19/2020,EA
+70,1,5,Microsoft - Surface RT 32GB,Microsoft - Surface RT 32GB,499.00,https://diviceimage.azureedge.net/devices/Microsoft/SurfaceRT_32.png,10/19/2020,EA
+71,1,5,Microsoft - Surface RT 64GB,Microsoft - Surface RT 64GB,599.00,https://diviceimage.azureedge.net/devices/Microsoft/SurfaceRT_64.png,10/19/2020,EA
+72,1,5,Microsoft - Surface Pro 64GB,Microsoft - Surface Pro 64GB,899.99,https://diviceimage.azureedge.net/devices/Microsoft/SurfacePro_64.png,10/19/2020,EA
+73,1,5,Microsoft - Surface Pro 128GB,Microsoft - Surface Pro 128GB,999.00,https://diviceimage.azureedge.net/devices/Microsoft/SurfacePro_128.png,10/19/2020,EA
+74,1,7,Samsung - Series 5,Samsung - Series 5,799.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_5.png,10/19/2020,EA
+75,1,7,Samsung - Series 7,Samsung - Series 7,1099.00,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_7.png,10/19/2020,EA
+76,1,7,Samsung - Series 7 Ultra,Samsung - Series 7 Ultra,1099.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_S5_Ultra.png,10/19/2020,EA
+77,1,7,Samsung - Series 9 Premium,Samsung - Series 9 Premium,1599.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_9_ultra.png,10/19/2020,EA
+78,1,7,Samsung - Series 7 Gamer,Samsung - Series 7 Gamer,1899.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_7_Gamer.png,10/19/2020,EA
+79,1,7,Samsung - Series 9 13.3,Samsung - Series 9 13.3,1299.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_913.png,10/19/2020,EA
+80,1,7,Samsung - Series 3 15.6,Samsung - Series 3 15.6,419.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_3156.png,10/19/2020,EA
+81,1,7,Samsung - Series 6,Samsung - Series 6,1524.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_6.png,10/19/2020,EA
+82,1,7,Samsung - Series 9,Samsung - Series 9,1299.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_9.png,10/19/2020,EA
+83,1,7,Samsung - Series 3 ,Samsung - Series 3 ,599.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_Series_3.png,10/19/2020,EA
+84,1,7,Samsung - ATIV Smart PC Pro,Samsung - ATIV Smart PC Pro,1929.99,https://diviceimage.azureedge.net/devices/Samsung/Samsung_ATIV.png,10/19/2020,EA
+85,1,8,Sony - VAIO E,Sony - VAIO E,799.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_E.png,10/19/2020,EA
+86,1,8,Sony - VAIO T ,Sony - VAIO T ,649.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_T.png,10/19/2020,EA
+87,1,8,Sony - VAIO Duo 11 ,Sony - VAIO Duo 11 ,1199.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_11.png,10/19/2020,EA
+88,1,8,Sony - VAIO Tap 20,Sony - VAIO Tap 20,879.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_Tap20.png,10/19/2020,EA
+89,1,8,Sony - VAIO L,Sony - VAIO L,1199.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_L.png,10/19/2020,EA
+90,1,8,Sony - VAIO E 14,Sony - VAIO E 14,449.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_E14.png,10/19/2020,EA
+91,1,8,Sony - VAIO T Series 15 Touch,Sony - VAIO T Series 15 Touch,1399.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_T15.png,10/19/2020,EA
+92,1,8,Sony - VAIO E 15,Sony - VAIO E 15,999.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_E15.png,10/19/2020,EA
+93,1,8,Sony - VAIO S,Sony - VAIO S,799.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_S.png,10/19/2020,EA
+94,1,8,Sony - VAIO T 15,Sony - VAIO T 15,949.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_T15.png,10/19/2020,EA
+95,1,8,Sony - VAIO T Series 14 Touch ,Sony - VAIO T Series 14 Touch ,899.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_T14.png,10/19/2020,EA
+96,1,8,Sony - VAIO S 15,Sony - VAIO S 15,799.99,https://diviceimage.azureedge.net/devices/Sony/Sony_Vaio_S15.png,10/19/2020,EA
+97,1,9,Toshiba - All-in-One LX835-D3380 ,Toshiba - All-in-One LX835-D3380 ,1399.99,https://diviceimage.azureedge.net/devices/Toshiba/Toshiba_LX835.png,10/19/2020,EA
+98,1,9,Toshiba - Portege Z935-ST4N02 ,Toshiba - Portege Z935-ST4N02 ,979.99,https://diviceimage.azureedge.net/devices/Toshiba/Toshiba_Portege.png,10/19/2020,EA
+99,1,9,Toshiba - Qosmio X870-ST3NX1 ,Toshiba - Qosmio X870-ST3NX1 ,1899.99,https://diviceimage.azureedge.net/devices/Toshiba/Toshiba_Qosmio.png,10/19/2020,EA
+100,1,9,Toshiba - Satellite C870-ST3NX3,Toshiba - Satellite C870-ST3NX3,479.99,https://diviceimage.azureedge.net/devices/Toshiba/Toshiba_Satellite.png,10/19/2020,EA
+101,1,9,Toshiba - Tecra R950,Toshiba - Tecra R950,999.99,https://diviceimage.azureedge.net/devices/Toshiba/Toshiba_Tecra.png,10/19/2020,EA

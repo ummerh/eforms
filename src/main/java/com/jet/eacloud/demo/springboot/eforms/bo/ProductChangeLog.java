@@ -54,12 +54,12 @@ public class ProductChangeLog implements Serializable {
 	@Column(nullable = false, length = 256)
 	private String changeStatus;
 
-	@Column(nullable = false, length = 256)
+	@Column(nullable = true, length = 256)
 	private String changedBy;
 
 	private Timestamp changeTs;
 
-	@Column(nullable = false, length = 256)
+	@Column(nullable = true, length = 256)
 	private String approvedBy;
 
 	private Timestamp approvedTs;

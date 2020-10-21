@@ -16,7 +16,7 @@ build_app(){
 
 build_docker(){
    docker build . -t eacloudacr.azurecr.io/eacloud/eforms
-   docker tag eacloudacr.azurecr.io/eacloud/eforms eacloudacr.azurecr.io/eacloud/eforms:0.0.3
+   docker tag eacloudacr.azurecr.io/eacloud/eforms eacloudacr.azurecr.io/eacloud/eforms:0.0.4
    docker push  eacloudacr.azurecr.io/eacloud/eforms
 }
 

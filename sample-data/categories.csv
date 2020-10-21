@@ -1,0 +1,10 @@
+category_id,active,category_name,category_description,category_imageurl,last_updated
+1,1,Acer,Acer,https://diviceimage.azureedge.net/devices/Logos/Acer.png,10/19/2020
+2,1,Asus,Asus,https://diviceimage.azureedge.net/devices/Logos/Asus.png,10/19/2020
+3,1,Dell,Dell,https://diviceimage.azureedge.net/devices/Logos/Dell.png,10/19/2020
+4,1,HP,HP,https://diviceimage.azureedge.net/devices/Logos/HP.png,10/19/2020
+5,1,Microsoft,Microsoft,https://diviceimage.azureedge.net/devices/Logos/Microsoft.png,10/19/2020
+6,1,Lenovo,Lenovo,https://diviceimage.azureedge.net/devices/Logos/Lenovo.png,10/19/2020
+7,1,Samsung,Samsung,https://diviceimage.azureedge.net/devices/Logos/Samsung.png,10/19/2020
+8,1,Sony,Sony,https://diviceimage.azureedge.net/devices/Logos/Sony.png,10/19/2020
+9,1,Toshiba,Toshiba,https://diviceimage.azureedge.net/devices/Logos/Toshiba.png,10/19/2020
